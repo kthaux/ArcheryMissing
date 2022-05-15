@@ -1,54 +1,11 @@
-/* TODO edit this description
-Collaborator Names: Keaton Haux, Sean Osborne, Jennifer To
-Game Title: Robo Runner
-Date Completed: 05/01/2022
-Creative Tilt Justification: Our game implements a split screen of a sort where 1 screen is the endless runner and the other screen
-are the gears that run our robot Bitsy that's running! For programming, we are happy about -programming technique we implemented-. In addition, we
-are happy about the art of how Bitsy changes from happy to sad when damaged/hit and because all the art generally goes with each other and
-nothing necessarily feels out of place.
-
-MAKE SURE TO PUT WHAT PROGRAMMING TECHNIQUE THAT WE ARE HAPPY WE GOT TO IMPLEMENT
-
-
-Assets
-Need to Make/Modify:
-- bgm 
-- font x
-- gameover sound ()
-- gear x
-- hit sound (thonk)
-*/
-
-let bestScore = 0;
-let score = 0;
-let gameOver = false;
-
-let config = 
-{
-    type: Phaser.AUTO,
-    width: 1280,
-    height: 480,
-    scale: {
-        autoCenter: Phaser.Scale.CENTER_BOTH
-    },
-    
-    physics: 
-    {
-        default: 'arcade',
-        arcade: 
-        {
-            debug: false,
-            gravity: 
-            {
-                x: 0,
-                y: 0
-            }
-        }
-    },
-
-    scene: [ Load ] //TODO put menu back in after testing
+let config = {
+    type: Phaser.CANVAS,
+    width: 1136,
+    height: 640,
+    autoCenter: true,
+    scene: [Load, Title, Prep, Tourney],
 };
 
-
+let tap, spacebar;
 
 let game = new Phaser.Game(config);
