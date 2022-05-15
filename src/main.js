@@ -6,6 +6,18 @@ let config = {
     scene: [Load, Title, Prep, Tourney],
 };
 
-let tap, spacebar, option1Count, option2Count, option3Count, option4Count, option5Count, option6Count;
+let menuConfig = {
+    fontFamily: 'Courier',
+    fontSize: '28px',
+    color: '#1FEA18',
+    align: 'right',
+    padding: {
+    top: 5,
+    bottom: 5,
+    },
+}
 
+let tap, spacebar;
+let option1Count, option2Count, option3Count, option4Count, option5Count, option6Count;
+let money = 1000;
 let game = new Phaser.Game(config);

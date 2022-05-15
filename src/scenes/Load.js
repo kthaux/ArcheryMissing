@@ -7,7 +7,7 @@ class Load extends Phaser.Scene
 
     preload() 
     {
-        
+        this.load.image('archerHat', 'assets/hat.png');
     }
 
     create() 

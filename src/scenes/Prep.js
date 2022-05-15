@@ -7,18 +7,44 @@ class Prep extends Phaser.Scene
 
     create() 
     {
-        let menuConfig = {
-            fontFamily: 'Courier',
-            fontSize: '28px',
-            backgroundColor: '#F3B141',
-            color: '#843605',
-            align: 'right',
-            padding: {
-            top: 5,
-            bottom: 5,
-            },
+        
+
+        this.createOptions();
+
+        this.archerGroup = this.add.group({
+            classType: Phaser.GameObjects.Sprite
+        });
+
+        this.createArchers();
+        let archerArr = this.archerGroup.getChildren();
+        for(let i = 0; i < 5; i++)
+        {
+            console.log('Archer' + i + ' ratio: ' + archerArr[i].myRatio);
+            console.log('Archer' + i + ' color: ' + archerArr[i].myColor);
+            console.log('Archer' + i + ' pos trait: ' + archerArr[i].myPosTrait);
+            console.log('Archer' + i + ' neg trait: ' + archerArr[i].myNegTrait);
+        }
+        
+
+    }
+
+    update()
+    {
+        if (Phaser.Input.Keyboard.JustDown(spacebar))
+        {
+            this.scene.start('tourneyScene');
         }
 
+        
+    }
+
+    swapScene()
+    {
+
+    }
+
+    createOptions()
+    {
         option1Count = 0;
         option2Count = 0;
         option3Count = 0;
@@ -71,15 +97,28 @@ class Prep extends Phaser.Scene
             option6Count++;
             console.log(option6Count);
         });
-
     }
 
-    update(){
-        if (Phaser.Input.Keyboard.JustDown(spacebar)){
-            this.scene.start('tourneyScene');
+    createArchers()
+    {
+        for(let i = 0; i < 5; i++)
+        {
+            // archer params: scene, ratio, color, positive trait, negative trait
+            let archer = new Archer(this, 
+                Math.random() * 2, 
+                this.getRandHexColor(), 
+                Math.floor(Math.random() * 6), 
+                Math.floor(Math.random() * 6));
+            
+            this.archerGroup.add(archer);
+            archer.tint = archer.myColor;
+            
         }
+        console.log('created archers:');
     }
 
-    swapScene(){
+    getRandHexColor()
+    {
+        return Math.floor(Math.random()*16777215).toString(16);
     }
 }
