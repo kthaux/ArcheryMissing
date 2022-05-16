@@ -45,12 +45,19 @@ class Prep extends Phaser.Scene
 
     createOptions()
     {
-        option1Count = 0;
-        option2Count = 0;
-        option3Count = 0;
-        option4Count = 0;
-        option5Count = 0;
-        option6Count = 0;
+        this.bought_1 = false;
+        this.bought_2 = false;
+        this.bought_3 = false;
+        this.bought_4 = false;
+        this.bought_5 = false;
+        this.bought_6 = false;
+
+        this.option1Count = 0;
+        this.option2Count = 0;
+        this.option3Count = 0;
+        this.option4Count = 0;
+        this.option5Count = 0;
+        this.option6Count = 0;
 
         spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         this.add.rectangle(0, game.config.height - 70, game.config.width, game.config.height / 8, 0xFF7400).setOrigin(0, 0);
@@ -75,27 +82,27 @@ class Prep extends Phaser.Scene
 
         this.option1.on('pointerdown', function (checking) {
             option1Count += 1;
-            console.log(option1Count);
+            
         });
         this.option2.on('pointerdown', function (checking) {
             option2Count++;
-            console.log(option2Count);
+            
         });
         this.option3.on('pointerdown', function (checking) {
             option3Count++;
-            console.log(option3Count);
+            
         });
         this.option4.on('pointerdown', function (checking) {
             option4Count++;
-            console.log(option4Count);
+            
         });
         this.option5.on('pointerdown', function (checking) {
             option5Count++;
-            console.log(option5Count);
+            
         });
         this.option6.on('pointerdown', function (checking) {
             option6Count++;
-            console.log(option6Count);
+            
         });
     }
 
@@ -121,4 +128,5 @@ class Prep extends Phaser.Scene
     {
         return Math.floor(Math.random()*16777215).toString(16);
     }
+
 }
