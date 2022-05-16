@@ -8,6 +8,9 @@ class Load extends Phaser.Scene
     preload() 
     {
         this.load.image('archerHat', 'assets/hat.png');
+        this.load.image('faan', 'assets/ffan.png');
+
+        this.load.audio('select', 'assets/Select.mp3');
     }
 
     create() 

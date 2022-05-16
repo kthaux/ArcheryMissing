@@ -27,6 +27,7 @@ class Tourney extends Phaser.Scene
 
     update(){
         if (Phaser.Input.Keyboard.JustDown(spacebar)){
+            this.sound.play('select');
             this.scene.start('titleScene');
         }
     }

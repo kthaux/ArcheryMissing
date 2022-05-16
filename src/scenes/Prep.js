@@ -32,6 +32,7 @@ class Prep extends Phaser.Scene
     {
         if (Phaser.Input.Keyboard.JustDown(spacebar))
         {
+            this.sound.play('select');
             this.scene.start('tourneyScene');
         }
 
@@ -82,6 +83,7 @@ class Prep extends Phaser.Scene
 
         this.option1.on('pointerdown', function (checking) {
             option1Count += 1;
+            
             
         });
         this.option2.on('pointerdown', function (checking) {
