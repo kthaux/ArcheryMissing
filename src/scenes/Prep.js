@@ -7,19 +7,22 @@ class Prep extends Phaser.Scene
 
     create() 
     {
-        
 
+        
+        //set up ui text and info for the prep scene
         this.createOptions();
 
+        //create the archer group
         this.archerGroup = this.add.group({
             classType: Phaser.GameObjects.Sprite
         });
 
+        //create archers with randomized stats
         this.createArchers();
         
-        
-        
 
+
+        
     }
 
     update()
@@ -30,6 +33,9 @@ class Prep extends Phaser.Scene
             this.scene.start('tourneyScene');
         }
 
+
+        //keep money count up do date every frame
+        this.moneyText.text = "Money: " + money;
         
     }
 
@@ -70,6 +76,8 @@ class Prep extends Phaser.Scene
         //ready prompt
         this.ready = this.add.text(game.config.width - 200, game.config.height + - 35, 'Press Space When Ready', menuConfig).setOrigin(0.5);
 
+        this.moneyText = this.add.text(game.config.width / 2, game.config.height - 50, 'Money:', menuConfig).setOrigin(0.5);
+        
         //add option text
         let option1 = this.add.text(game.config.width / 8, game.config.height / 6, 'Air Horn', optionConfig).setOrigin(0.5);
         let option2 = this.add.text(game.config.width / 8, game.config.height / 2.5, 'Giant Fan', optionConfig).setOrigin(0.5);
@@ -88,34 +96,58 @@ class Prep extends Phaser.Scene
         this.ready.setInteractive();
 
         option1.on('pointerdown', function (checking) {
-            bought_1 = true;
-            option1.setStyle(optionConfig2);
+            if(bought_1 == false)
+            {
+                bought_1 = true;
+                option1.setStyle(optionConfig2);
+                money -= 50;
+            }
             
             
         });
         option2.on('pointerdown', function (checking) {
-            bought_2 = true;
-            option2.setStyle(optionConfig2);
+            if(bought_2 == false)
+            {
+                bought_2 = true;
+                option2.setStyle(optionConfig2);
+                money -= 50;
+            }
             
         });
         option3.on('pointerdown', function (checking) {
-            bought_3 = true;
-            option3.setStyle(optionConfig2);
-            
+            if(bought_3 == false)
+            {
+                bought_3 = true;
+                option3.setStyle(optionConfig2);
+                money -= 50;
+            }
+
         });
         option4.on('pointerdown', function (checking) {
-            bought_4 = true;
-            option4.setStyle(optionConfig2);
-            
+            if(bought_4 == false)
+            {
+                bought_4 = true;
+                option4.setStyle(optionConfig2);
+                money -= 50;
+            }
+
         });
         option5.on('pointerdown', function (checking) {
-            bought_5 = true;
-            option5.setStyle(optionConfig2);
-            
+            if(bought_5 == false)
+            {
+                bought_5 = true;
+                option5.setStyle(optionConfig2);
+                money -= 50;
+            }
+
         });
         option6.on('pointerdown', function (checking) {
-            bought_6 = true;
-            option6.setStyle(optionConfig2);
+            if(bought_6 == false)
+            {
+                bought_6 = true;
+                option6.setStyle(optionConfig2);
+                money -= 50;
+            }
             
         });
     }
@@ -132,10 +164,15 @@ class Prep extends Phaser.Scene
                 Math.floor(Math.random() * 6));
             
             this.archerGroup.add(archer);
-            archer.setTint(archer.myColor);
+            //archer.setTint(archer.myColor);
             
         }
         let archerArr = this.archerGroup.getChildren();
+        for(let i = 0; i < 5; i++)
+        {
+            let sprite = archerArr[i];
+            sprite.tint = archerArr[i].myColor;
+        }
         archerArr[0].x = 800;
         archerArr[0].y = 50;
         archerArr[1].x = 1000;
@@ -154,6 +191,9 @@ class Prep extends Phaser.Scene
             console.log('Archer' + i + ' neg trait: ' + archerArr[i].myNegTrait);
         }
         console.log('created archers:');
+
+        let hat = this.add.sprite(game.config.width / 2, game.config.height / 2, 'archerHat');
+        hat.tint = archerArr[0].myColor;
     }
 
     getRandHexColor()
