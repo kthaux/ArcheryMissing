@@ -39,6 +39,17 @@ let optionConfig2 = {
     },
 }
 
+let statsConfig = {
+    fontFamily: 'Courier',
+    fontSize: '18px',
+    color: '#FF0000',
+    align: 'right',
+    padding: {
+    top: 5,
+    bottom: 5,
+    },
+}
+
 let tap, spacebar;
 let option1Count, option2Count, option3Count, option4Count, option5Count, option6Count;
 let money = 1000;
