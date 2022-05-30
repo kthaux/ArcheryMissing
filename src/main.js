@@ -39,6 +39,18 @@ let optionConfig2 = {
     },
 }
 
+let optionDes = {
+    fontFamily: 'Courier',
+    fontSize: '14px',
+    color: '#000000',
+    align: 'center',
+    padding: {
+    top: 5,
+    bottom: 5,
+    fixedWidth: 10,
+    },
+}
+
 let statsConfig = {
     fontFamily: 'Courier',
     fontSize: '18px',

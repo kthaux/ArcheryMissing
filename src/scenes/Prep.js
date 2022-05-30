@@ -110,8 +110,6 @@ class Prep extends Phaser.Scene
                 option1.setStyle(optionConfig);
                 money += 50;
             }
-            
-            
         });
         //Giant Fan
         option2.on('pointerdown', function (checking) {
@@ -192,6 +190,43 @@ class Prep extends Phaser.Scene
                 money += 50;
             }
             
+        });
+
+        option1.on('pointerover', function (descript) {
+            option1des.setColor('#FFFFFF')
+        });
+        option1.on('pointerout', function (descript) {
+            option1des.setColor('#000000')
+        });
+        option2.on('pointerover', function (descript) {
+            option2des.setColor('#FFFFFF')
+        });
+        option2.on('pointerout', function (descript) {
+            option2des.setColor('#000000')
+        });
+        option3.on('pointerover', function (descript) {
+            option3des.setColor('#FFFFFF')
+        });
+        option3.on('pointerout', function (descript) {
+            option3des.setColor('#000000')
+        });
+        option4.on('pointerover', function (descript) {
+            option4des.setColor('#FFFFFF')
+        });
+        option4.on('pointerout', function (descript) {
+            option4des.setColor('#000000')
+        });
+        option5.on('pointerover', function (descript) {
+            option5des.setColor('#FFFFFF')
+        });
+        option5.on('pointerout', function (descript) {
+            option5des.setColor('#000000')
+        });
+        option6.on('pointerover', function (descript) {
+            option6des.setColor('#FFFFFF')
+        });
+        option6.on('pointerout', function (descript) {
+            option6des.setColor('#000000')
         });
     }
 
