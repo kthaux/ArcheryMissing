@@ -94,11 +94,18 @@ class Prep extends Phaser.Scene
         
         //add option text
         let option1 = this.add.text(game.config.width / 8, game.config.height / 6, 'Air Horn $' + sab1p, optionConfig).setOrigin(0.5);
-        let option2 = this.add.text(game.config.width / 8, game.config.height / 2.5, 'Giant Fan $' + sab2p, optionConfig).setOrigin(0.5);
-        let option3 = this.add.text(game.config.width / 8, game.config.height / 1.5, 'Bent Arrows $' + sab3p, optionConfig).setOrigin(0.5);
-        let option4 = this.add.text(game.config.width / 3, game.config.height / 6, 'Misaligned Bow $' + sab4p, optionConfig).setOrigin(0.5);
-        let option5 = this.add.text(game.config.width / 3, game.config.height / 2.5, 'Release Birds $' + sab5p, optionConfig).setOrigin(0.5);
-        let option6 = this.add.text(game.config.width / 3, game.config.height / 1.5, 'Cause a fight $' + sab6p, optionConfig).setOrigin(0.5);
+        let option2 = this.add.text(game.config.width / 8, game.config.height / 2.5, 'Giant Fan', optionConfig).setOrigin(0.5);
+        let option3 = this.add.text(game.config.width / 8, game.config.height / 1.5, 'Lead Arrows', optionConfig).setOrigin(0.5);
+        let option4 = this.add.text(game.config.width / 3, game.config.height / 6, 'Tampered Bow', optionConfig).setOrigin(0.5);
+        let option5 = this.add.text(game.config.width / 3, game.config.height / 2.5, 'Bird Flock', optionConfig).setOrigin(0.5);
+        let option6 = this.add.text(game.config.width / 3, game.config.height / 1.5, 'Rumble', optionConfig).setOrigin(0.5);
+
+        let option1des = this.add.text(game.config.width / 8.25, game.config.height / 3.75, 'The good ole fashioned.\nDisturbing the peace since \n19-whenever this thing \nwas invented.\n\nCost: $' + sab1p, optionDes).setOrigin(0.5);
+        let option2des = this.add.text(game.config.width / 8.25, game.config.height / 1.95, "They'll think it's for air\nconditioning. It probably\nwould be if it wasn't\nthe middle of winter.\n\nCost: $"+ sab2p, optionDes).setOrigin(0.5);
+        let option3des = this.add.text(game.config.width / 8.25, game.config.height * 0.78, "The nice thing about\nsupplying arrows for the\narchers is that they can't\ncomplain when the\narrows are made of lead.\n\nCost: $"+ sab3p, optionDes).setOrigin(0.5);
+        let option4des = this.add.text(game.config.width / 3, game.config.height / 3.6, "I considered having archers\nuse crossbows since they're\ntechnically still bows, but I\ndecided that flimsy and unreliable\nbows would be funnier.\n\nCost: $"+ sab4p, optionDes).setOrigin(0.5);
+        let option5des = this.add.text(game.config.width / 3, game.config.height / 1.99, "My pal Sammy has massive bird\ncoop. Let's just say they'll\nbe flying south for the winter.\n\nCost: $"+ sab5p, optionDes).setOrigin(0.5);
+        let option6des = this.add.text(game.config.width / 3, game.config.height * 0.77, "I have a friend. His name is\nDennis. Dennis tends to start\nfights. You can see where I'm\ngoing with this.\n\nCost: $"+ sab6p, optionDes).setOrigin(0.5);
         
         //set them to interactable
         option1.setInteractive();
