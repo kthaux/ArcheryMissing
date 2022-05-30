@@ -68,6 +68,20 @@ class Prep extends Phaser.Scene
 
         this.add.rectangle(900, 400, 150, 150, 0xFFFFFF).setOrigin(0, 0);
 
+        //inventory slots
+        this.add.rectangle(10, game.config.height / 1.105, 55, 55, 0x545454).setOrigin(0, 0);
+        this.add.rectangle(80, game.config.height / 1.105, 55, 55, 0x545454).setOrigin(0, 0);
+        this.add.rectangle(150, game.config.height / 1.105, 55, 55, 0x545454).setOrigin(0, 0);
+        this.add.rectangle(220, game.config.height / 1.105, 55, 55, 0x545454).setOrigin(0, 0);
+        this.add.rectangle(290, game.config.height / 1.105, 55, 55, 0x545454).setOrigin(0, 0);
+        this.add.rectangle(360, game.config.height / 1.105, 55, 55, 0x545454).setOrigin(0, 0);
+        let box1filled = false;
+        let box2filled = false;
+        let box3filled = false;
+        let box4filled = false;
+        let box5filled = false;
+        let box6filled = false;
+
         //instruction text
         this.title = this.add.text(game.config.width/4.3, 40, 'Choose Your Sabotages', menuConfig).setOrigin(0.5);
         this.instructions = this.add.text(game.config.width/4, 60, 'Click the name to buy it for the next round', menuConfig).setOrigin(0.5);
