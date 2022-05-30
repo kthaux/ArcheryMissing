@@ -81,10 +81,17 @@ class Prep extends Phaser.Scene
         //add option text
         let option1 = this.add.text(game.config.width / 8, game.config.height / 6, 'Air Horn', optionConfig).setOrigin(0.5);
         let option2 = this.add.text(game.config.width / 8, game.config.height / 2.5, 'Giant Fan', optionConfig).setOrigin(0.5);
-        let option3 = this.add.text(game.config.width / 8, game.config.height / 1.5, 'Bent Arrows', optionConfig).setOrigin(0.5);
-        let option4 = this.add.text(game.config.width / 3, game.config.height / 6, 'Misaligned Bow', optionConfig).setOrigin(0.5);
-        let option5 = this.add.text(game.config.width / 3, game.config.height / 2.5, 'Release Birds', optionConfig).setOrigin(0.5);
-        let option6 = this.add.text(game.config.width / 3, game.config.height / 1.5, 'Cause a fight', optionConfig).setOrigin(0.5);
+        let option3 = this.add.text(game.config.width / 8, game.config.height / 1.5, 'Lead Arrows', optionConfig).setOrigin(0.5);
+        let option4 = this.add.text(game.config.width / 3, game.config.height / 6, 'Tampered Bow', optionConfig).setOrigin(0.5);
+        let option5 = this.add.text(game.config.width / 3, game.config.height / 2.5, 'Bird Flock', optionConfig).setOrigin(0.5);
+        let option6 = this.add.text(game.config.width / 3, game.config.height / 1.5, 'Rumble', optionConfig).setOrigin(0.5);
+
+        let option1des = this.add.text(game.config.width / 8.25, game.config.height / 3.75, 'The good ole fashioned.\nDisturbing the peace since \n19-whenever this thing \nwas invented.\n\nCost: 50', optionDes).setOrigin(0.5);
+        let option2des = this.add.text(game.config.width / 8.25, game.config.height / 1.95, "They'll think it's for air\nconditioning. It probably\nwould be if it wasn't\nthe middle of winter.\n\nCost: 50", optionDes).setOrigin(0.5);
+        let option3des = this.add.text(game.config.width / 8.25, game.config.height * 0.78, "The nice thing about\nsupplying arrows for the\narchers is that they can't\ncomplain when the\narrows are made of lead.\n\nCost: 50", optionDes).setOrigin(0.5);
+        let option4des = this.add.text(game.config.width / 3, game.config.height / 3.6, "I considered having archers\nuse crossbows since they're\ntechnically still bows, but I\ndecided that flimsy and unreliable\nbows would be funnier.\n\nCost: 50", optionDes).setOrigin(0.5);
+        let option5des = this.add.text(game.config.width / 3, game.config.height / 1.99, "My pal Sammy has massive bird\ncoop. Let's just say they'll\nbe flying south for the winter.\n\nCost: 50", optionDes).setOrigin(0.5);
+        let option6des = this.add.text(game.config.width / 3, game.config.height * 0.77, "I have a friend. His name is\nDennis. Dennis tends to start\nfights. You can see where I'm\ngoing with this.\n\nCost: 50", optionDes).setOrigin(0.5);
         
         //set them to interactable
         option1.setInteractive();
@@ -109,9 +116,8 @@ class Prep extends Phaser.Scene
                 option1.setStyle(optionConfig);
                 money += 50;
             }
-            
-            
         });
+
         option2.on('pointerdown', function (checking) {
             if(bought_2 == false)
             {
@@ -186,6 +192,43 @@ class Prep extends Phaser.Scene
                 money += 50;
             }
             
+        });
+
+        option1.on('pointerover', function (descript) {
+            option1des.setColor('#FFFFFF')
+        });
+        option1.on('pointerout', function (descript) {
+            option1des.setColor('#000000')
+        });
+        option2.on('pointerover', function (descript) {
+            option2des.setColor('#FFFFFF')
+        });
+        option2.on('pointerout', function (descript) {
+            option2des.setColor('#000000')
+        });
+        option3.on('pointerover', function (descript) {
+            option3des.setColor('#FFFFFF')
+        });
+        option3.on('pointerout', function (descript) {
+            option3des.setColor('#000000')
+        });
+        option4.on('pointerover', function (descript) {
+            option4des.setColor('#FFFFFF')
+        });
+        option4.on('pointerout', function (descript) {
+            option4des.setColor('#000000')
+        });
+        option5.on('pointerover', function (descript) {
+            option5des.setColor('#FFFFFF')
+        });
+        option5.on('pointerout', function (descript) {
+            option5des.setColor('#000000')
+        });
+        option6.on('pointerover', function (descript) {
+            option6des.setColor('#FFFFFF')
+        });
+        option6.on('pointerout', function (descript) {
+            option6des.setColor('#000000')
         });
     }
 
