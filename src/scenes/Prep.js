@@ -79,12 +79,12 @@ class Prep extends Phaser.Scene
         this.moneyText = this.add.text(game.config.width / 2, game.config.height - 50, 'Money:', menuConfig).setOrigin(0.5);
         
         //add option text
-        let option1 = this.add.text(game.config.width / 8, game.config.height / 6, 'Air Horn', optionConfig).setOrigin(0.5);
-        let option2 = this.add.text(game.config.width / 8, game.config.height / 2.5, 'Giant Fan', optionConfig).setOrigin(0.5);
-        let option3 = this.add.text(game.config.width / 8, game.config.height / 1.5, 'Bent Arrows', optionConfig).setOrigin(0.5);
-        let option4 = this.add.text(game.config.width / 3, game.config.height / 6, 'Misaligned Bow', optionConfig).setOrigin(0.5);
-        let option5 = this.add.text(game.config.width / 3, game.config.height / 2.5, 'Release Birds', optionConfig).setOrigin(0.5);
-        let option6 = this.add.text(game.config.width / 3, game.config.height / 1.5, 'Cause a fight', optionConfig).setOrigin(0.5);
+        let option1 = this.add.text(game.config.width / 8, game.config.height / 6, 'Air Horn $' + sab1p, optionConfig).setOrigin(0.5);
+        let option2 = this.add.text(game.config.width / 8, game.config.height / 2.5, 'Giant Fan $' + sab2p, optionConfig).setOrigin(0.5);
+        let option3 = this.add.text(game.config.width / 8, game.config.height / 1.5, 'Bent Arrows $' + sab3p, optionConfig).setOrigin(0.5);
+        let option4 = this.add.text(game.config.width / 3, game.config.height / 6, 'Misaligned Bow $' + sab4p, optionConfig).setOrigin(0.5);
+        let option5 = this.add.text(game.config.width / 3, game.config.height / 2.5, 'Release Birds $' + sab5p, optionConfig).setOrigin(0.5);
+        let option6 = this.add.text(game.config.width / 3, game.config.height / 1.5, 'Cause a fight $' + sab6p, optionConfig).setOrigin(0.5);
         
         //set them to interactable
         option1.setInteractive();
@@ -95,6 +95,7 @@ class Prep extends Phaser.Scene
         option6.setInteractive();
         this.ready.setInteractive();
 
+        //Air horn
         option1.on('pointerdown', function (checking) {
             if(bought_1 == false)
             {
@@ -112,6 +113,7 @@ class Prep extends Phaser.Scene
             
             
         });
+        //Giant Fan
         option2.on('pointerdown', function (checking) {
             if(bought_2 == false)
             {
@@ -127,6 +129,7 @@ class Prep extends Phaser.Scene
             }
             
         });
+        //Bent Arrows
         option3.on('pointerdown', function (checking) {
             if(bought_3 == false)
             {
@@ -142,6 +145,7 @@ class Prep extends Phaser.Scene
             }
 
         });
+        //misaligned bow
         option4.on('pointerdown', function (checking) {
             if(bought_4 == false)
             {
@@ -157,6 +161,7 @@ class Prep extends Phaser.Scene
             }
 
         });
+        //release birds
         option5.on('pointerdown', function (checking) {
             if(bought_5 == false)
             {
@@ -172,6 +177,7 @@ class Prep extends Phaser.Scene
             }
 
         });
+        //cause a fight
         option6.on('pointerdown', function (checking) {
             if(bought_6 == false)
             {
@@ -196,7 +202,7 @@ class Prep extends Phaser.Scene
         {
             // archer params: scene, ratio, color, positive trait, negative trait
             let archer = new Archer(this, 
-                (Math.random() * 2 + 1).toFixed(3), 
+                (Math.random() * 2 + 1).toFixed(2), 
                 this.getRandHexColor(), 
                 Math.floor(Math.random() * 6), 
                 Math.floor(Math.random() * 6));
