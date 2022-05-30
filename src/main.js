@@ -19,7 +19,7 @@ let menuConfig = {
 
 let optionConfig = {
     fontFamily: 'Courier',
-    fontSize: '28px',
+    fontSize: '24px',
     color: '#FF0000',
     align: 'right',
     padding: {
@@ -30,7 +30,7 @@ let optionConfig = {
 
 let optionConfig2 = {
     fontFamily: 'Courier',
-    fontSize: '28px',
+    fontSize: '24px',
     color: '#59FF20',
     align: 'right',
     padding: {
@@ -71,5 +71,13 @@ let bought_3 = false;
 let bought_4 = false;
 let bought_5 = false;
 let bought_6 = false;
+
+//sabotage prices
+let sab1p = 25;
+let sab2p = 100;
+let sab3p = 50;
+let sab4p = 75;
+let sab5p = 60;
+let sab6p = 30;
 
 let game = new Phaser.Game(config);

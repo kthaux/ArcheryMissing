@@ -93,19 +93,12 @@ class Prep extends Phaser.Scene
         this.moneyText = this.add.text(game.config.width / 2, game.config.height - 50, 'Money:', menuConfig).setOrigin(0.5);
         
         //add option text
-        let option1 = this.add.text(game.config.width / 8, game.config.height / 6, 'Air Horn', optionConfig).setOrigin(0.5);
-        let option2 = this.add.text(game.config.width / 8, game.config.height / 2.5, 'Giant Fan', optionConfig).setOrigin(0.5);
-        let option3 = this.add.text(game.config.width / 8, game.config.height / 1.5, 'Lead Arrows', optionConfig).setOrigin(0.5);
-        let option4 = this.add.text(game.config.width / 3, game.config.height / 6, 'Tampered Bow', optionConfig).setOrigin(0.5);
-        let option5 = this.add.text(game.config.width / 3, game.config.height / 2.5, 'Bird Flock', optionConfig).setOrigin(0.5);
-        let option6 = this.add.text(game.config.width / 3, game.config.height / 1.5, 'Rumble', optionConfig).setOrigin(0.5);
-
-        let option1des = this.add.text(game.config.width / 8.25, game.config.height / 3.75, 'The good ole fashioned.\nDisturbing the peace since \n19-whenever this thing \nwas invented.\n\nCost: 50', optionDes).setOrigin(0.5);
-        let option2des = this.add.text(game.config.width / 8.25, game.config.height / 1.95, "They'll think it's for air\nconditioning. It probably\nwould be if it wasn't\nthe middle of winter.\n\nCost: 50", optionDes).setOrigin(0.5);
-        let option3des = this.add.text(game.config.width / 8.25, game.config.height * 0.78, "The nice thing about\nsupplying arrows for the\narchers is that they can't\ncomplain when the\narrows are made of lead.\n\nCost: 50", optionDes).setOrigin(0.5);
-        let option4des = this.add.text(game.config.width / 3, game.config.height / 3.6, "I considered having archers\nuse crossbows since they're\ntechnically still bows, but I\ndecided that flimsy and unreliable\nbows would be funnier.\n\nCost: 50", optionDes).setOrigin(0.5);
-        let option5des = this.add.text(game.config.width / 3, game.config.height / 1.99, "My pal Sammy has massive bird\ncoop. Let's just say they'll\nbe flying south for the winter.\n\nCost: 50", optionDes).setOrigin(0.5);
-        let option6des = this.add.text(game.config.width / 3, game.config.height * 0.77, "I have a friend. His name is\nDennis. Dennis tends to start\nfights. You can see where I'm\ngoing with this.\n\nCost: 50", optionDes).setOrigin(0.5);
+        let option1 = this.add.text(game.config.width / 8, game.config.height / 6, 'Air Horn $' + sab1p, optionConfig).setOrigin(0.5);
+        let option2 = this.add.text(game.config.width / 8, game.config.height / 2.5, 'Giant Fan $' + sab2p, optionConfig).setOrigin(0.5);
+        let option3 = this.add.text(game.config.width / 8, game.config.height / 1.5, 'Bent Arrows $' + sab3p, optionConfig).setOrigin(0.5);
+        let option4 = this.add.text(game.config.width / 3, game.config.height / 6, 'Misaligned Bow $' + sab4p, optionConfig).setOrigin(0.5);
+        let option5 = this.add.text(game.config.width / 3, game.config.height / 2.5, 'Release Birds $' + sab5p, optionConfig).setOrigin(0.5);
+        let option6 = this.add.text(game.config.width / 3, game.config.height / 1.5, 'Cause a fight $' + sab6p, optionConfig).setOrigin(0.5);
         
         //set them to interactable
         option1.setInteractive();
@@ -116,6 +109,7 @@ class Prep extends Phaser.Scene
         option6.setInteractive();
         this.ready.setInteractive();
 
+        //Air horn
         option1.on('pointerdown', function (checking) {
             if(bought_1 == false)
             {
@@ -131,7 +125,7 @@ class Prep extends Phaser.Scene
                 money += 50;
             }
         });
-
+        //Giant Fan
         option2.on('pointerdown', function (checking) {
             if(bought_2 == false)
             {
@@ -147,6 +141,7 @@ class Prep extends Phaser.Scene
             }
             
         });
+        //Bent Arrows
         option3.on('pointerdown', function (checking) {
             if(bought_3 == false)
             {
@@ -162,6 +157,7 @@ class Prep extends Phaser.Scene
             }
 
         });
+        //misaligned bow
         option4.on('pointerdown', function (checking) {
             if(bought_4 == false)
             {
@@ -177,6 +173,7 @@ class Prep extends Phaser.Scene
             }
 
         });
+        //release birds
         option5.on('pointerdown', function (checking) {
             if(bought_5 == false)
             {
@@ -192,6 +189,7 @@ class Prep extends Phaser.Scene
             }
 
         });
+        //cause a fight
         option6.on('pointerdown', function (checking) {
             if(bought_6 == false)
             {
@@ -253,7 +251,7 @@ class Prep extends Phaser.Scene
         {
             // archer params: scene, ratio, color, positive trait, negative trait
             let archer = new Archer(this, 
-                (Math.random() * 2 + 1).toFixed(3), 
+                (Math.random() * 2 + 1).toFixed(2), 
                 this.getRandHexColor(), 
                 Math.floor(Math.random() * 6), 
                 Math.floor(Math.random() * 6));

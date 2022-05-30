@@ -27,8 +27,18 @@ class Tourney extends Phaser.Scene
 
     update(){
         if (Phaser.Input.Keyboard.JustDown(spacebar)){
+            //reset purchases back to false after the tourney is over
+            bought_1 = false;
+            bought_2 = false;
+            bought_3 = false;
+            bought_4 = false;
+            bought_5 = false;
+            bought_6 = false;
+            
             this.sound.play('select');
             this.scene.start('titleScene');
+            //reset purchases back to false after the tourney is over
+            
         }
     }
 }
