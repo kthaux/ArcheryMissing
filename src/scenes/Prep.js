@@ -27,10 +27,17 @@ class Prep extends Phaser.Scene
 
     update()
     {
+        
         if (Phaser.Input.Keyboard.JustDown(spacebar))
         {
+            console.log('in update: archerArr[0].myColor: ' + this.archerArr[0].myColor);
             this.sound.play('select');
-            this.scene.start('tourneyScene');
+            this.scene.start('tourneyScene', {
+                a1: this.archerArr[0], 
+                a2: this.archerArr[1],
+                a3: this.archerArr[2],
+                a4: this.archerArr[3],
+                a5: this.archerArr[4]});
         }
 
 
@@ -122,14 +129,14 @@ class Prep extends Phaser.Scene
             {
                 bought_1 = true;
                 option1.setStyle(optionConfig2);
-                money -= 50;
+                money -= sab1p;
             }
 
             else if(bought_1 == true)
             {
                 bought_1 = false;
                 option1.setStyle(optionConfig);
-                money += 50;
+                money += sab1p;
             }
         });
         //Giant Fan
@@ -138,13 +145,13 @@ class Prep extends Phaser.Scene
             {
                 bought_2 = true;
                 option2.setStyle(optionConfig2);
-                money -= 50;
+                money -= sab2p;
             }
             else if(bought_2 == true)
             {
                 bought_2 = false;
                 option2.setStyle(optionConfig);
-                money += 50;
+                money += sab2p;
             }
             
         });
@@ -154,13 +161,13 @@ class Prep extends Phaser.Scene
             {
                 bought_3 = true;
                 option3.setStyle(optionConfig2);
-                money -= 50;
+                money -= sab3p;
             }
             else if(bought_3 == true)
             {
                 bought_3 = false;
                 option3.setStyle(optionConfig);
-                money += 50;
+                money += sab3p;
             }
 
         });
@@ -170,13 +177,13 @@ class Prep extends Phaser.Scene
             {
                 bought_4 = true;
                 option4.setStyle(optionConfig2);
-                money -= 50;
+                money -= sab4p;
             }
             else if(bought_4 == true)
             {
                 bought_4 = false;
                 option4.setStyle(optionConfig);
-                money += 50;
+                money += sab4p;
             }
 
         });
@@ -186,13 +193,13 @@ class Prep extends Phaser.Scene
             {
                 bought_5 = true;
                 option5.setStyle(optionConfig2);
-                money -= 50;
+                money -= sab5p;
             }
             else if(bought_5 == true)
             {
                 bought_5 = false;
                 option5.setStyle(optionConfig);
-                money += 50;
+                money += sab5p;
             }
 
         });
@@ -202,13 +209,13 @@ class Prep extends Phaser.Scene
             {
                 bought_6 = true;
                 option6.setStyle(optionConfig2);
-                money -= 50;
+                money -= sab6p;
             }
             else if(bought_6 == true)
             {
                 bought_6 = false;
                 option6.setStyle(optionConfig);
-                money += 50;
+                money += sab6p;
             }
             
         });
@@ -270,28 +277,29 @@ class Prep extends Phaser.Scene
         }
 
         //crate an array from our group of archers
-        let archerArr = this.archerGroup.getChildren();
+        this.archerArr = this.archerGroup.getChildren();
 
         //attempt to tint each archer hat
         for(let i = 0; i < 5; i++)
         {
-            let sprite = archerArr[i];
-            sprite.tint = archerArr[i].myColor;
+            let sprite = this.archerArr[i];
+            sprite.tint = this.archerArr[i].myColor;
         }
 
         //position each archerhat sprite in the corner of each stat block
-        archerArr[0].x = 800;
-        archerArr[0].y = 50;
-        archerArr[1].x = 1000;
-        archerArr[1].y = 50;
-        archerArr[2].x = 800;
-        archerArr[2].y = 225;
-        archerArr[3].x = 1000;
-        archerArr[3].y = 225;
-        archerArr[4].x = 900;
-        archerArr[4].y = 400;
+        this.archerArr[0].x = 800;
+        this.archerArr[0].y = 50;
+        this.archerArr[1].x = 1000;
+        this.archerArr[1].y = 50;
+        this.archerArr[2].x = 800;
+        this.archerArr[2].y = 225;
+        this.archerArr[3].x = 1000;
+        this.archerArr[3].y = 225;
+        this.archerArr[4].x = 900;
+        this.archerArr[4].y = 400;
 
         //debug print the stats of each archer
+        /*
         for(let i = 0; i < 5; i++)
         {
             console.log('Archer' + i + ' ratio: ' + archerArr[i].myRatio);
@@ -300,61 +308,64 @@ class Prep extends Phaser.Scene
             console.log('Archer' + i + ' neg trait: ' + archerArr[i].myNegTrait);
         }
         console.log('created archers:');
+        */
 
         //print stats  in the stat block
         for(let i = 0; i < 5; i++)
         {
-            this.add.text(archerArr[i].x + 75, archerArr[i].y + 25, 'Ratio: ' + archerArr[i].myRatio, statsConfig).setOrigin(0.5);
+            this.add.text(this.archerArr[i].x + 75, this.archerArr[i].y + 25, 'Ratio: ' + this.archerArr[i].myRatio, statsConfig).setOrigin(0.5);
 
 
-            this.add.sprite(archerArr[i].x + 30, archerArr[i].y + 60, 'upArrow');
-            this.add.sprite(archerArr[i].x + 30, archerArr[i].y + 120, 'downArrow');
+            this.add.sprite(this.archerArr[i].x + 30, this.archerArr[i].y + 60, 'upArrow');
+            this.add.sprite(this.archerArr[i].x + 30, this.archerArr[i].y + 120, 'downArrow');
 
-            switch(archerArr[i].myPosTrait)
+            switch(this.archerArr[i].myPosTrait)
             {
                 case 0:
-                    this.add.sprite(archerArr[i].x + 100, archerArr[i].y + 60, 'horn').setScale(0.3);
+                    this.add.sprite(this.archerArr[i].x + 100, this.archerArr[i].y + 60, 'horn').setScale(0.3);
                     break;
                 case 1:
-                    this.add.sprite(archerArr[i].x + 100, archerArr[i].y + 60, 'misbow').setScale(0.3);
+                    this.add.sprite(this.archerArr[i].x + 100, this.archerArr[i].y + 60, 'misbow').setScale(0.3);
                     break;
                 case 2:
-                    this.add.sprite(archerArr[i].x + 100, archerArr[i].y + 60, 'fan').setScale(0.3);
+                    this.add.sprite(this.archerArr[i].x + 100, this.archerArr[i].y + 60, 'fan').setScale(0.3);
                     break;
                 case 3:
-                    this.add.sprite(archerArr[i].x + 100, archerArr[i].y + 60, 'bird').setScale(0.4);
+                    this.add.sprite(this.archerArr[i].x + 100, this.archerArr[i].y + 60, 'bird').setScale(0.4);
                     break;
                 case 4:
-                    this.add.sprite(archerArr[i].x + 100, archerArr[i].y + 60, 'bentarrow').setScale(0.4);
+                    this.add.sprite(this.archerArr[i].x + 100, this.archerArr[i].y + 60, 'bentarrow').setScale(0.4);
                     break;
                 case 5:
-                    this.add.sprite(archerArr[i].x + 100, archerArr[i].y + 60, 'fight').setScale(0.3);
+                    this.add.sprite(this.archerArr[i].x + 100, this.archerArr[i].y + 60, 'fight').setScale(0.3);
                     break;
             }
 
-            switch(archerArr[i].myNegTrait)
+            switch(this.archerArr[i].myNegTrait)
             {
                 case 0:
-                    this.add.sprite(archerArr[i].x + 100, archerArr[i].y + 120, 'horn').setScale(0.3);
+                    this.add.sprite(this.archerArr[i].x + 100, this.archerArr[i].y + 120, 'horn').setScale(0.3);
                     break;
                 case 1:
-                    this.add.sprite(archerArr[i].x + 100, archerArr[i].y + 120, 'misbow').setScale(0.3);
+                    this.add.sprite(this.archerArr[i].x + 100, this.archerArr[i].y + 120, 'misbow').setScale(0.3);
                     break;
                 case 2:
-                    this.add.sprite(archerArr[i].x + 100, archerArr[i].y + 120, 'fan').setScale(0.3);
+                    this.add.sprite(this.archerArr[i].x + 100, this.archerArr[i].y + 120, 'fan').setScale(0.3);
                     break;
                 case 3:
-                    this.add.sprite(archerArr[i].x + 100, archerArr[i].y + 120, 'bird').setScale(0.4);
+                    this.add.sprite(this.archerArr[i].x + 100, this.archerArr[i].y + 120, 'bird').setScale(0.4);
                     break;
                 case 4:
-                    this.add.sprite(archerArr[i].x + 100, archerArr[i].y + 120, 'bentarrow').setScale(0.4);
+                    this.add.sprite(this.archerArr[i].x + 100, this.archerArr[i].y + 120, 'bentarrow').setScale(0.4);
                     break;
                 case 5:
-                    this.add.sprite(archerArr[i].x + 100, archerArr[i].y + 120, 'fight').setScale(0.3);
+                    this.add.sprite(this.archerArr[i].x + 100, this.archerArr[i].y + 120, 'fight').setScale(0.3);
                     break;
             }
         }
     }
+
+    
 
     getRandHexColor()
     {
