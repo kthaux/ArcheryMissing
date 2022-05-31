@@ -80,6 +80,14 @@ let sab4p = 75;
 let sab5p = 60;
 let sab6p = 30;
 
+//sabotage multipliers
+let sab1r = 1.1;
+let sab2r = 1.2;
+let sab3r = 1.3;
+let sab4r = 1.4;
+let sab5r = 1.5;
+let sab6r = 1.6;
+
 
 
 let game = new Phaser.Game(config);

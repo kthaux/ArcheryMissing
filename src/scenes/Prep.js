@@ -30,7 +30,7 @@ class Prep extends Phaser.Scene
         
         if (Phaser.Input.Keyboard.JustDown(spacebar))
         {
-            console.log('in update: archerArr[0].myColor: ' + this.archerArr[0].myColor);
+            //console.log('in update: archerArr[0].myColor: ' + this.archerArr[0].myColor);
             this.sound.play('select');
             this.scene.start('tourneyScene', {
                 a1: this.archerArr[0], 
