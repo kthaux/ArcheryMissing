@@ -72,18 +72,21 @@ class Tourney extends Phaser.Scene
         console.log('Archer ' + 1 + ' score: ' + this.scoreArr[0]);
         for(let i = 1; i < 5; i++)
         {
-            
             console.log('Archer ' + (i + 1) + ' score: ' + this.scoreArr[i]);
             if(this.scoreArr[i] < this.scoreArr[winner])
             {
                 console.log('archer' + (i+1) + ' score: ' + this.scoreArr[i] + ' is less than archer' + i + ' score: ' + this.scoreArr[winner]);
                 winner = i;
             }
-                
-
-            
         }
+
         this.title.text = 'Winner: Archer #' + (winner + 1);
+        this.multiplierText = this.add.text(game.config.width/2, game.config.height/2 + 50, 'Payout Multiplier: ' + this.archerArr[winner].myRatio, menuConfig).setOrigin(0.5);
+        if(this.archerArr[winner].myBet > 0)
+        {
+            this.payoutText = this.add.text(game.config.width/2, game.config.height/2 + 100, 'Payed out: ' + (this.archerArr[winner].myRatio * this.archerArr[winner].myBet), menuConfig).setOrigin(0.5);
+            money += this.archerArr[winner].myRatio * this.archerArr[winner].myBet;
+        }
     }
 
     update()

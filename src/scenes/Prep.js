@@ -5,6 +5,27 @@ class Prep extends Phaser.Scene
         super('prepScene');
     }
 
+    //TODO: function to handle money adjustments to verify that enough money is available
+    adjustMoney(amount, sign)
+    {
+        if(sign > 0)
+        {
+            money = money + amount;
+        }
+        else if(sign < 0)
+        {
+            if((money - amount) < 0)
+            {
+                //flash red text maybe?
+                console.log('not enough money to make purchase/bet');
+            }
+            else if((money - amount) >= 0)
+            {
+                money = money - amount;
+            }
+        }
+    }
+
     create() 
     {
 
@@ -25,6 +46,8 @@ class Prep extends Phaser.Scene
         
     }
 
+    
+
     update()
     {
         
@@ -42,9 +65,13 @@ class Prep extends Phaser.Scene
         }
 
 
-        //keep money count up do date every frame
+        //keep money and bet count up do date every frame
         this.moneyText.text = "Money: " + money;
         this.bet1text.text = 'Bet:\n' + this.archerArr[0].myBet;
+        this.bet2text.text = 'Bet:\n' + this.archerArr[1].myBet;
+        this.bet3text.text = 'Bet:\n' + this.archerArr[2].myBet;
+        this.bet4text.text = 'Bet:\n' + this.archerArr[3].myBet;
+        this.bet5text.text = 'Bet:\n' + this.archerArr[4].myBet;
         
     }
 
@@ -145,7 +172,7 @@ class Prep extends Phaser.Scene
 
         //Air horn
         option1.on('pointerdown', function (checking) {
-            if(bought_1 == false)
+            if(bought_1 == false && money >= sab1p)
             {
                 if(box1filled == "none"){
                     box1filled = "horn";
@@ -179,10 +206,11 @@ class Prep extends Phaser.Scene
                 }
                 bought_1 = true;
                 option1.setStyle(optionConfig2);
-                money -= sab1p;
+                this.scene.adjustMoney(sab1p, -1)
+                //money -= sab1p;
             }
 
-            else {
+            else if(bought_1 == true){
                 if(box1filled == "horn"){
                     box1filled = "none";
                     box1.setAlpha(0);
@@ -215,7 +243,7 @@ class Prep extends Phaser.Scene
         });
         //Giant Fan
         option2.on('pointerdown', function (checking) {
-            if(bought_2 == false)
+            if(bought_2 == false && money >= sab2p)
             {
                 if(box1filled == "none"){
                     box1filled = "fan";
@@ -287,7 +315,7 @@ class Prep extends Phaser.Scene
         });
         //Bent Arrows
         option3.on('pointerdown', function (checking) {
-            if(bought_3 == false)
+            if(bought_3 == false && money >= sab3p)
             {
                 if(box1filled == "none"){
                     box1filled = "bentarrow";
@@ -359,7 +387,7 @@ class Prep extends Phaser.Scene
         });
         //misaligned bow
         option4.on('pointerdown', function (checking) {
-            if(bought_4 == false)
+            if(bought_4 == false && money >= sab4p)
             {
                 if(box1filled == "none"){
                     box1filled = "misbow";
@@ -431,7 +459,7 @@ class Prep extends Phaser.Scene
         });
         //release birds
         option5.on('pointerdown', function (checking) {
-            if(bought_5 == false)
+            if(bought_5 == false && money >= sab5p)
             {
                 if(box1filled == "none"){
                     box1filled = "bird";
@@ -503,7 +531,7 @@ class Prep extends Phaser.Scene
         });
         //cause a fight
         option6.on('pointerdown', function (checking) {
-            if(bought_6 == false)
+            if(bought_6 == false && money >= sab6p)
             {
                 if(box1filled == "none"){
                     box1filled = "fight";
@@ -721,14 +749,16 @@ class Prep extends Phaser.Scene
         }
 
         //display the plus and minus icons for increasing and decreasing betting values
+        //archer 1
         this.plus1 = this.add.sprite(this.archerArr[0].x - 30, this.archerArr[0].y + 20, 'plus');
         this.plus1.setInteractive({
             useHandCursor: true
         });
         this.plus1.on('pointerdown', function (pointer){
-            this.scene.archerArr[0].myBet += 50;
-            //adjustMoney(50, -1);
-            money -= 50;
+            if((money - 50) >= 0)
+                this.scene.archerArr[0].myBet += 50;
+            this.scene.adjustMoney(50, -1);
+            //money -= 50;
         });
 
         this.minus1 = this.add.sprite(this.archerArr[0].x - 30, this.archerArr[0].y + 70, 'minus');
@@ -740,20 +770,127 @@ class Prep extends Phaser.Scene
             if(this.scene.archerArr[0].myBet > 0)
             {
                 this.scene.archerArr[0].myBet -= 50;
-                //adjustMoney(50, 1);
-                money += 50;
+                this.scene.adjustMoney(50, 1);
+                //money += 50;
             }
         });
 
         this.bet1text = this.add.text(this.archerArr[0].x - 30, this.archerArr[0].y + 110, 'Bet:\n' + this.archerArr[0].myBet, betConfig).setOrigin(0.5);
 
+        //archer 2
+        this.plus2 = this.add.sprite(this.archerArr[1].x - 30, this.archerArr[1].y + 20, 'plus');
+        this.plus2.setInteractive({
+            useHandCursor: true
+        });
+        this.plus2.on('pointerdown', function (pointer){
+            if((money - 50) >= 0)
+                this.scene.archerArr[1].myBet += 50;
+            this.scene.adjustMoney(50, -1);
+            //money -= 50;
+        });
+
+        this.minus2 = this.add.sprite(this.archerArr[1].x - 30, this.archerArr[1].y + 70, 'minus');
+        this.minus2.setInteractive({
+            useHandCursor: true
+        });
+        this.minus2.on('pointerdown', function (pointer){
+            //keep bet from going negative
+            if(this.scene.archerArr[1].myBet > 0)
+            {
+                this.scene.archerArr[1].myBet -= 50;
+                this.scene.adjustMoney(50, 1);
+                //money += 50;
+            }
+        });
+
+        this.bet2text = this.add.text(this.archerArr[1].x - 30, this.archerArr[1].y + 110, 'Bet:\n' + this.archerArr[1].myBet, betConfig).setOrigin(0.5);
+
+        //archer 3
+        this.plus3 = this.add.sprite(this.archerArr[2].x - 30, this.archerArr[2].y + 20, 'plus');
+        this.plus3.setInteractive({
+            useHandCursor: true
+        });
+        this.plus3.on('pointerdown', function (pointer){
+            if((money - 50) >= 0)
+                this.scene.archerArr[2].myBet += 50;
+            this.scene.adjustMoney(50, -1);
+            //money -= 50;
+        });
+
+        this.minus3 = this.add.sprite(this.archerArr[2].x - 30, this.archerArr[2].y + 70, 'minus');
+        this.minus3.setInteractive({
+            useHandCursor: true
+        });
+        this.minus3.on('pointerdown', function (pointer){
+            //keep bet from going negative
+            if(this.scene.archerArr[2].myBet > 0)
+            {
+                this.scene.archerArr[2].myBet -= 50;
+                this.scene.adjustMoney(50, 1);
+                //money += 50;
+            }
+        });
+
+        this.bet3text = this.add.text(this.archerArr[2].x - 30, this.archerArr[2].y + 110, 'Bet:\n' + this.archerArr[2].myBet, betConfig).setOrigin(0.5);
+
+        //archer 4
+        this.plus4 = this.add.sprite(this.archerArr[3].x - 30, this.archerArr[3].y + 20, 'plus');
+        this.plus4.setInteractive({
+            useHandCursor: true
+        });
+        this.plus4.on('pointerdown', function (pointer){
+            if((money - 50) >= 0)
+                this.scene.archerArr[3].myBet += 50;
+            this.scene.adjustMoney(50, -1);
+            //money -= 50;
+        });
+
+        this.minus4 = this.add.sprite(this.archerArr[3].x - 30, this.archerArr[3].y + 70, 'minus');
+        this.minus4.setInteractive({
+            useHandCursor: true
+        });
+        this.minus4.on('pointerdown', function (pointer){
+            //keep bet from going negative
+            if(this.scene.archerArr[3].myBet > 0)
+            {
+                this.scene.archerArr[3].myBet -= 50;
+                this.scene.adjustMoney(50, 1);
+                //money += 50;
+            }
+        });
+
+        this.bet4text = this.add.text(this.archerArr[3].x - 30, this.archerArr[3].y + 110, 'Bet:\n' + this.archerArr[3].myBet, betConfig).setOrigin(0.5);
+
+        //archer 5
+        this.plus5 = this.add.sprite(this.archerArr[4].x - 30, this.archerArr[4].y + 20, 'plus');
+        this.plus5.setInteractive({
+            useHandCursor: true
+        });
+        this.plus5.on('pointerdown', function (pointer){
+            if((money - 50) >= 0)
+                this.scene.archerArr[4].myBet += 50;
+            this.scene.adjustMoney(50, -1);
+            //money -= 50;
+        });
+
+        this.minus5 = this.add.sprite(this.archerArr[4].x - 30, this.archerArr[4].y + 70, 'minus');
+        this.minus5.setInteractive({
+            useHandCursor: true
+        });
+        this.minus5.on('pointerdown', function (pointer){
+            //keep bet from going negative
+            if(this.scene.archerArr[4].myBet > 0)
+            {
+                this.scene.archerArr[4].myBet -= 50;
+                this.scene.adjustMoney(50, 1);
+                //money += 50;
+            }
+        });
+
+        this.bet5text = this.add.text(this.archerArr[4].x - 30, this.archerArr[4].y + 110, 'Bet:\n' + this.archerArr[4].myBet, betConfig).setOrigin(0.5);
     }
 
-    //TODO: function to handle money adjustments to verify that enough money is available
-    adjustMoney(amount, sign)
-    {
 
-    }
 
     getRandHexColor()
     {
