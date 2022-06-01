@@ -82,12 +82,30 @@ class Prep extends Phaser.Scene
         this.add.rectangle(220, game.config.height / 1.105, 55, 55, 0x545454).setOrigin(0, 0);
         this.add.rectangle(290, game.config.height / 1.105, 55, 55, 0x545454).setOrigin(0, 0);
         this.add.rectangle(360, game.config.height / 1.105, 55, 55, 0x545454).setOrigin(0, 0);
-        let box1filled = false;
-        let box2filled = false;
-        let box3filled = false;
-        let box4filled = false;
-        let box5filled = false;
-        let box6filled = false;
+        let box1 = this.add.sprite(40, game.config.height / 1.055, 'horn');
+        let box2 = this.add.sprite(110, game.config.height / 1.055, 'horn');
+        let box3 = this.add.sprite(180, game.config.height / 1.055, 'horn');
+        let box4 = this.add.sprite(250, game.config.height / 1.055, 'horn');
+        let box5 = this.add.sprite(320, game.config.height / 1.055, 'horn');
+        let box6 = this.add.sprite(390, game.config.height / 1.055, 'horn');
+        let box1filled = "none";
+        let box2filled = "none";
+        let box3filled = "none";
+        let box4filled = "none";
+        let box5filled = "none";
+        let box6filled = "none";
+        box1.setScale(0.4,0.275);
+        box2.setScale(0.4,0.275);
+        box3.setScale(0.4,0.275);
+        box4.setScale(0.4,0.275);
+        box5.setScale(0.4,0.275);
+        box6.setScale(0.4,0.275);
+        box1.setAlpha(0);
+        box2.setAlpha(0);
+        box3.setAlpha(0);
+        box4.setAlpha(0);
+        box5.setAlpha(0);
+        box6.setAlpha(0);
 
         //instruction text
         this.title = this.add.text(game.config.width/4.3, 40, 'Choose Your Sabotages', menuConfig).setOrigin(0.5);
@@ -127,13 +145,67 @@ class Prep extends Phaser.Scene
         option1.on('pointerdown', function (checking) {
             if(bought_1 == false)
             {
+                if(box1filled == "none"){
+                    box1filled = "horn";
+                    box1.setTexture('horn');
+                    box1.setAlpha(1);
+                }
+                else if(box2filled == "none"){
+                    box2filled = "horn";
+                    box2.setTexture('horn');
+                    box2.setAlpha(1);
+                }
+                else if(box3filled == "none"){
+                    box3filled = "horn";
+                    box3.setTexture('horn');
+                    box3.setAlpha(1);
+                }
+                else if(box4filled == "none"){
+                    box4filled = "horn";
+                    box4.setTexture('horn');
+                    box4.setAlpha(1);
+                }
+                else if(box5filled == "none"){
+                    box5filled = "horn";
+                    box5.setTexture('horn');
+                    box5.setAlpha(1);
+                }
+                else if(box6filled == "none"){
+                    box6filled = "horn";
+                    box6.setTexture('horn');
+                    box6.setAlpha(1);
+                }
                 bought_1 = true;
                 option1.setStyle(optionConfig2);
                 money -= sab1p;
             }
 
-            else if(bought_1 == true)
-            {
+            else {
+                if(box1filled == "horn"){
+                    box1filled = "none";
+                    box1.setAlpha(0);
+                }
+                else if(box2filled == "horn"){
+                    box2filled = "none";
+                    box2.setAlpha(0);
+                }
+                else if(box3filled == "horn"){
+                    box3filled = "none";
+                    box3.setAlpha(0);
+                }
+                else if(box4filled == "horn"){
+                    box4filled = "none";
+                    box4.setAlpha(0);
+                }
+                else if(box5filled == "horn"){
+                    box5filled = "none";
+                    box5.setAlpha(0);
+                }
+                else if(box6filled == "horn"){
+                    box6filled = "none";
+                    box6.setAlpha(0);
+                }
+
                 bought_1 = false;
                 option1.setStyle(optionConfig);
                 money += sab1p;
@@ -143,12 +215,68 @@ class Prep extends Phaser.Scene
         option2.on('pointerdown', function (checking) {
             if(bought_2 == false)
             {
+                if(box1filled == "none"){
+                    box1filled = "fan";
+                    box1.setTexture('fan');
+                    box1.setAlpha(1);
+                }
+                else if(box2filled == "none"){
+                    box2filled = "fan";
+                    box2.setTexture('fan');
+                    box2.setAlpha(1);
+                }
+                else if(box3filled == "none"){
+                    box3filled = "fan";
+                    box3.setTexture('fan');
+                    box3.setAlpha(1);
+                }
+                else if(box4filled == "none"){
+                    box4filled = "fan";
+                    box4.setTexture('fan');
+                    box4.setAlpha(1);
+                }
+                else if(box5filled == "none"){
+                    box5filled = "fan";
+                    box5.setTexture('fan');
+                    box5.setAlpha(1);
+                }
+                else if(box6filled == "none"){
+                    box6filled = "fan";
+                    box6.setTexture('fan');
+                    box6.setAlpha(1);
+                }
+
                 bought_2 = true;
                 option2.setStyle(optionConfig2);
                 money -= sab2p;
             }
             else if(bought_2 == true)
             {
+                if(box1filled == "fan"){
+                    box1filled = "none";
+                    box1.setAlpha(0);
+                }
+                else if(box2filled == "fan"){
+                    box2filled = "none";
+                    box2.setAlpha(0);
+                }
+                else if(box3filled == "fan"){
+                    box3filled = "none";
+                    box3.setAlpha(0);
+                }
+                else if(box4filled == "fan"){
+                    box4filled = "none";
+                    box4.setAlpha(0);
+                }
+                else if(box5filled == "fan"){
+                    box5filled = "none";
+                    box5.setAlpha(0);
+                }
+                else if(box6filled == "fan"){
+                    box6filled = "none";
+                    box6.setAlpha(0);
+                }
+
                 bought_2 = false;
                 option2.setStyle(optionConfig);
                 money += sab2p;
@@ -159,12 +287,68 @@ class Prep extends Phaser.Scene
         option3.on('pointerdown', function (checking) {
             if(bought_3 == false)
             {
+                if(box1filled == "none"){
+                    box1filled = "bentarrow";
+                    box1.setTexture('bentarrow');
+                    box1.setAlpha(1);
+                }
+                else if(box2filled == "none"){
+                    box2filled = "bentarrow";
+                    box2.setTexture('bentarrow');
+                    box2.setAlpha(1);
+                }
+                else if(box3filled == "none"){
+                    box3filled = "bentarrow";
+                    box3.setTexture('bentarrow');
+                    box3.setAlpha(1);
+                }
+                else if(box4filled == "none"){
+                    box4filled = "bentarrow";
+                    box4.setTexture('bentarrow');
+                    box4.setAlpha(1);
+                }
+                else if(box5filled == "none"){
+                    box5filled = "bentarrow";
+                    box5.setTexture('bentarrow');
+                    box5.setAlpha(1);
+                }
+                else if(box6filled == "none"){
+                    box6filled = "bentarrow";
+                    box6.setTexture('bentarrow');
+                    box6.setAlpha(1);
+                }
+                
                 bought_3 = true;
                 option3.setStyle(optionConfig2);
                 money -= sab3p;
             }
             else if(bought_3 == true)
             {
+                if(box1filled == "bentarrow"){
+                    box1filled = "none";
+                    box1.setAlpha(0);
+                }
+                else if(box2filled == "bentarrow"){
+                    box2filled = "none";
+                    box2.setAlpha(0);
+                }
+                else if(box3filled == "bentarrow"){
+                    box3filled = "none";
+                    box3.setAlpha(0);
+                }
+                else if(box4filled == "bentarrow"){
+                    box4filled = "none";
+                    box4.setAlpha(0);
+                }
+                else if(box5filled == "bentarrow"){
+                    box5filled = "none";
+                    box5.setAlpha(0);
+                }
+                else if(box6filled == "bentarrow"){
+                    box6filled = "none";
+                    box6.setAlpha(0);
+                }
+                
                 bought_3 = false;
                 option3.setStyle(optionConfig);
                 money += sab3p;
@@ -175,12 +359,68 @@ class Prep extends Phaser.Scene
         option4.on('pointerdown', function (checking) {
             if(bought_4 == false)
             {
+                if(box1filled == "none"){
+                    box1filled = "misbow";
+                    box1.setTexture('misbow');
+                    box1.setAlpha(1);
+                }
+                else if(box2filled == "none"){
+                    box2filled = "misbow";
+                    box2.setTexture('misbow');
+                    box2.setAlpha(1);
+                }
+                else if(box3filled == "none"){
+                    box3filled = "misbow";
+                    box3.setTexture('misbow');
+                    box3.setAlpha(1);
+                }
+                else if(box4filled == "none"){
+                    box4filled = "misbow";
+                    box4.setTexture('misbow');
+                    box4.setAlpha(1);
+                }
+                else if(box5filled == "none"){
+                    box5filled = "misbow";
+                    box5.setTexture('misbow');
+                    box5.setAlpha(1);
+                }
+                else if(box6filled == "none"){
+                    box6filled = "misbow";
+                    box6.setTexture('misbow');
+                    box6.setAlpha(1);
+                }
+                
                 bought_4 = true;
                 option4.setStyle(optionConfig2);
                 money -= sab4p;
             }
             else if(bought_4 == true)
             {
+                if(box1filled == "misbow"){
+                    box1filled = "none";
+                    box1.setAlpha(0);
+                }
+                else if(box2filled == "misbow"){
+                    box2filled = "none";
+                    box2.setAlpha(0);
+                }
+                else if(box3filled == "misbow"){
+                    box3filled = "none";
+                    box3.setAlpha(0);
+                }
+                else if(box4filled == "misbow"){
+                    box4filled = "none";
+                    box4.setAlpha(0);
+                }
+                else if(box5filled == "misbow"){
+                    box5filled = "none";
+                    box5.setAlpha(0);
+                }
+                else if(box6filled == "misbow"){
+                    box6filled = "none";
+                    box6.setAlpha(0);
+                }
+                
                 bought_4 = false;
                 option4.setStyle(optionConfig);
                 money += sab4p;
@@ -191,12 +431,68 @@ class Prep extends Phaser.Scene
         option5.on('pointerdown', function (checking) {
             if(bought_5 == false)
             {
+                if(box1filled == "none"){
+                    box1filled = "bird";
+                    box1.setTexture('bird');
+                    box1.setAlpha(1);
+                }
+                else if(box2filled == "none"){
+                    box2filled = "bird";
+                    box2.setTexture('bird');
+                    box2.setAlpha(1);
+                }
+                else if(box3filled == "none"){
+                    box3filled = "bird";
+                    box3.setTexture('bird');
+                    box3.setAlpha(1);
+                }
+                else if(box4filled == "none"){
+                    box4filled = "bird";
+                    box4.setTexture('bird');
+                    box4.setAlpha(1);
+                }
+                else if(box5filled == "none"){
+                    box5filled = "bird";
+                    box5.setTexture('bird');
+                    box5.setAlpha(1);
+                }
+                else if(box6filled == "none"){
+                    box6filled = "bird";
+                    box6.setTexture('bird');
+                    box6.setAlpha(1);
+                }
+                
                 bought_5 = true;
                 option5.setStyle(optionConfig2);
                 money -= sab5p;
             }
             else if(bought_5 == true)
             {
+                if(box1filled == "bird"){
+                    box1filled = "none";
+                    box1.setAlpha(0);
+                }
+                else if(box2filled == "bird"){
+                    box2filled = "none";
+                    box2.setAlpha(0);
+                }
+                else if(box3filled == "bird"){
+                    box3filled = "none";
+                    box3.setAlpha(0);
+                }
+                else if(box4filled == "bird"){
+                    box4filled = "none";
+                    box4.setAlpha(0);
+                }
+                else if(box5filled == "bird"){
+                    box5filled = "none";
+                    box5.setAlpha(0);
+                }
+                else if(box6filled == "bird"){
+                    box6filled = "none";
+                    box6.setAlpha(0);
+                }
+
                 bought_5 = false;
                 option5.setStyle(optionConfig);
                 money += sab5p;
@@ -207,6 +503,37 @@ class Prep extends Phaser.Scene
         option6.on('pointerdown', function (checking) {
             if(bought_6 == false)
             {
+                if(box1filled == "none"){
+                    box1filled = "fight";
+                    box1.setTexture('fight');
+                    box1.setAlpha(1);
+                }
+                else if(box2filled == "none"){
+                    box2filled = "fight";
+                    box2.setTexture('fight');
+                    box2.setAlpha(1);
+                }
+                else if(box3filled == "none"){
+                    box3filled = "fight";
+                    box3.setTexture('fight');
+                    box3.setAlpha(1);
+                }
+                else if(box4filled == "none"){
+                    box4filled = "fight";
+                    box4.setTexture('fight');
+                    box4.setAlpha(1);
+                }
+                else if(box5filled == "none"){
+                    box5filled = "fight";
+                    box5.setTexture('fight');
+                    box5.setAlpha(1);
+                }
+                else if(box6filled == "none"){
+                    box6filled = "fight";
+                    box6.setTexture('fight');
+                    box6.setAlpha(1);
+                }
+                
                 bought_6 = true;
                 option6.setStyle(optionConfig2);
                 money -= sab6p;
@@ -216,6 +543,31 @@ class Prep extends Phaser.Scene
                 bought_6 = false;
                 option6.setStyle(optionConfig);
                 money += sab6p;
+
+                if(box1filled == "fight"){
+                    box1filled = "none";
+                    box1.setAlpha(0);
+                }
+                else if(box2filled == "fight"){
+                    box2filled = "none";
+                    box2.setAlpha(0);
+                }
+                else if(box3filled == "fight"){
+                    box3filled = "none";
+                    box3.setAlpha(0);
+                }
+                else if(box4filled == "fight"){
+                    box4filled = "none";
+                    box4.setAlpha(0);
+                }
+                else if(box5filled == "fight"){
+                    box5filled = "none";
+                    box5.setAlpha(0);
+                }
+                else if(box6filled == "fight"){
+                    box6filled = "none";
+                    box6.setAlpha(0);
+                }
             }
             
         });
@@ -371,5 +723,4 @@ class Prep extends Phaser.Scene
     {
         return Math.floor(Math.random()*16777215).toString(16);
     }
-
 }

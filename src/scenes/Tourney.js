@@ -67,14 +67,21 @@ class Tourney extends Phaser.Scene
             }
         }
         //set winner to archer 1 until lowest score is found
+        //winner holds the array index #
         let winner = 0;
-        console.log('Archer ' + 0 + ' score: ' + this.scoreArr[0]);
+        console.log('Archer ' + 1 + ' score: ' + this.scoreArr[0]);
         for(let i = 1; i < 5; i++)
         {
-            if(this.scoreArr[i] < this.scoreArr[i - 1])
+            
+            console.log('Archer ' + (i + 1) + ' score: ' + this.scoreArr[i]);
+            if(this.scoreArr[i] < this.scoreArr[winner])
+            {
+                console.log('archer' + (i+1) + ' score: ' + this.scoreArr[i] + ' is less than archer' + i + ' score: ' + this.scoreArr[winner]);
                 winner = i;
+            }
+                
 
-            console.log('Archer ' + i + ' score: ' + this.scoreArr[i]);
+            
         }
         this.title.text = 'Winner: Archer #' + (winner + 1);
     }

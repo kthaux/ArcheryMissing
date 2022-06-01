@@ -7,6 +7,8 @@ class Load extends Phaser.Scene
 
     preload() 
     {
+        this.load.image('bg', 'assets/titletext.png');
+        
         this.load.image('archerHat', 'assets/hat.png');
         this.load.image('upArrow', 'assets/upArrow.png');
         this.load.image('downArrow', 'assets/downArrow.png');

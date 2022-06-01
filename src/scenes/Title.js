@@ -20,8 +20,7 @@ class Title extends Phaser.Scene
             fixedWidth: 0
         }
 
-        this.title = this.add.text(game.config.width/2, game.config.height/2, 'TITLE SCREEN TEXT', menuConfig).setOrigin(0.5);
-        this.space = this.add.text(game.config.width/2, game.config.height/1.5, 'PRESS SPACE', menuConfig).setOrigin(0.5);
+        this.bg = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'bg').setOrigin(0);
         spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE); 
     }
 
