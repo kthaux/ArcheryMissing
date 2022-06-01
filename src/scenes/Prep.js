@@ -32,6 +32,7 @@ class Prep extends Phaser.Scene
         {
             //console.log('in update: archerArr[0].myColor: ' + this.archerArr[0].myColor);
             this.sound.play('select');
+            //pass archer array into the tourney scene
             this.scene.start('tourneyScene', {
                 a1: this.archerArr[0], 
                 a2: this.archerArr[1],
@@ -43,6 +44,7 @@ class Prep extends Phaser.Scene
 
         //keep money count up do date every frame
         this.moneyText.text = "Money: " + money;
+        this.bet1text.text = 'Bet:\n' + this.archerArr[0].myBet;
         
     }
 
@@ -665,12 +667,13 @@ class Prep extends Phaser.Scene
         //print stats  in the stat block
         for(let i = 0; i < 5; i++)
         {
+            //print the betting ratio of each archer
             this.add.text(this.archerArr[i].x + 75, this.archerArr[i].y + 25, 'Ratio: ' + this.archerArr[i].myRatio, statsConfig).setOrigin(0.5);
-
-
+            //display the arrows for each archer's pos and neg trait
             this.add.sprite(this.archerArr[i].x + 30, this.archerArr[i].y + 60, 'upArrow');
             this.add.sprite(this.archerArr[i].x + 30, this.archerArr[i].y + 120, 'downArrow');
-
+            
+            //display each archer's pos trait icon
             switch(this.archerArr[i].myPosTrait)
             {
                 case 0:
@@ -692,7 +695,7 @@ class Prep extends Phaser.Scene
                     this.add.sprite(this.archerArr[i].x + 100, this.archerArr[i].y + 60, 'fight').setScale(0.3);
                     break;
             }
-
+            //display each archer's neg trait icon
             switch(this.archerArr[i].myNegTrait)
             {
                 case 0:
@@ -714,10 +717,43 @@ class Prep extends Phaser.Scene
                     this.add.sprite(this.archerArr[i].x + 100, this.archerArr[i].y + 120, 'fight').setScale(0.3);
                     break;
             }
+
         }
+
+        //display the plus and minus icons for increasing and decreasing betting values
+        this.plus1 = this.add.sprite(this.archerArr[0].x - 30, this.archerArr[0].y + 20, 'plus');
+        this.plus1.setInteractive({
+            useHandCursor: true
+        });
+        this.plus1.on('pointerdown', function (pointer){
+            this.scene.archerArr[0].myBet += 50;
+            //adjustMoney(50, -1);
+            money -= 50;
+        });
+
+        this.minus1 = this.add.sprite(this.archerArr[0].x - 30, this.archerArr[0].y + 70, 'minus');
+        this.minus1.setInteractive({
+            useHandCursor: true
+        });
+        this.minus1.on('pointerdown', function (pointer){
+            //keep bet from going negative
+            if(this.scene.archerArr[0].myBet > 0)
+            {
+                this.scene.archerArr[0].myBet -= 50;
+                //adjustMoney(50, 1);
+                money += 50;
+            }
+        });
+
+        this.bet1text = this.add.text(this.archerArr[0].x - 30, this.archerArr[0].y + 110, 'Bet:\n' + this.archerArr[0].myBet, betConfig).setOrigin(0.5);
+
     }
 
-    
+    //TODO: function to handle money adjustments to verify that enough money is available
+    adjustMoney(amount, sign)
+    {
+
+    }
 
     getRandHexColor()
     {

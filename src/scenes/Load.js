@@ -12,6 +12,8 @@ class Load extends Phaser.Scene
         this.load.image('archerHat', 'assets/hat.png');
         this.load.image('upArrow', 'assets/upArrow.png');
         this.load.image('downArrow', 'assets/downArrow.png');
+        this.load.image('minus', 'assets/minus.png');
+        this.load.image('plus', 'assets/plus.png');
 
         this.load.image('horn', 'assets/horn.png');
         this.load.image('misbow', 'assets/misbow.png');
