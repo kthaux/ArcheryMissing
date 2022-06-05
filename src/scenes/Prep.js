@@ -27,9 +27,7 @@ class Prep extends Phaser.Scene
     }
 
     create() 
-    {
-
-        
+    {        
         //set up ui text and info for the prep scene
         this.createOptions();
 
@@ -40,10 +38,69 @@ class Prep extends Phaser.Scene
 
         //create archers with randomized stats
         this.createArchers();
-        
 
+        let menuConfig = {
+            fontFamily: 'Copperplate',
+            fontSize: '30px',
+            color: '#3ae0c5',
+            align: 'center',
+            padding: {
+            top: 5,
+            bottom: 5,
+            },
+            fixedWidth: 750
+        }
 
-        
+        if(rundownCheck){
+            this.spaceCount = 0;
+            this.leftInstruct = this.add.rectangle(0, 0, game.config.width / 2.4, game.config.height, 0x525252).setOrigin(0, 0);
+            this.rightInstruct = this.add.rectangle(game.config.width / 1.7, 0, game.config.width / 2.4, game.config.height, 0x525252).setOrigin(0, 0);
+            this.rundown = this.add.text(game.config.width/1.25, game.config.height / 2.25, "So here's the deal,\nI'm tryna leave this tourney\nwith as much money as I can.\n\nI'm starting this with $1,000.\n\nPress Space", menuConfig).setOrigin(0.5);
+
+            this.LeftOut = this.tweens.add({
+                targets: this.leftInstruct,
+                alpha: {from: 1, to: 0},
+                duration: 500,
+                ease: "Sine.easeInOut",
+                paused: true,
+
+            });
+
+            this.LeftIn = this.tweens.add({
+                targets: this.leftInstruct,
+                alpha: {from: 0, to: 1},
+                duration: 500,
+                ease: "Sine.easeInOut",
+                paused: true,
+
+            });
+
+            this.RightOut = this.tweens.add({
+                targets: this.rightInstruct,
+                alpha: {from: 1, to: 0},
+                duration: 500,
+                ease: "Sine.easeInOut",
+                paused: true,
+
+            });
+
+            this.rundownOut = this.tweens.add({
+                targets: this.rundown,
+                scale: {from: 1, to: 0},
+                duration: 100,
+                ease: "Sine.easeInOut",
+                paused: true
+            });
+
+            this.rundownIn = this.tweens.add({
+                targets: this.rundown,
+                scale: {from: 0, to: 1},
+                duration: 100,
+                ease: "Sine.easeInOut",
+                paused: true
+            });
+
+        }
     }
 
     
@@ -53,15 +110,40 @@ class Prep extends Phaser.Scene
         
         if (Phaser.Input.Keyboard.JustDown(spacebar))
         {
+            if(rundownCheck){
+                if (this.spaceCount == 1) {
+                    this.spaceCount += 1;
+                    this.LeftIn.play();
+                    this.RightOut.play();
+                    this.rundownOut.play();
+                    this.time.delayedCall(500, () => {
+                        this.rightInstruct.destroy();
+                        this.rundown.x = 250;
+                        this.rundown.text = "These are stats on the\narchers we're sabotaging.\n\nIt basically means how likely\nsome are to get distracted\nby certain sabotages or not.\n\nClick the orange plus next to\nany archer to bet money,\nor press the blue minus\nto undo that.\n\nPress Space"
+                        this.rundownIn.play();
+                        
+                    })
+                }
+                if(this.spaceCount == 0){
+                    this.spaceCount += 1;
+                    this.LeftOut.play();
+                    this.time.delayedCall(500, () => {
+                        this.rundown.text = "These here are the sabotages.\n\nHover the mouse over one\nto get some info on it,\nlike how much it costs.\n\nClick it to add it to your\ninventory, click it again to\nremove it.\n\nPress Space"
+                    })
+                }
+                
+            } else{
+                this.sound.play('select');
+                //pass archer array into the tourney scene
+                this.scene.start('tourneyScene', {
+                    a1: this.archerArr[0], 
+                    a2: this.archerArr[1],
+                    a3: this.archerArr[2],
+                    a4: this.archerArr[3],
+                    a5: this.archerArr[4]});
+            }
             //console.log('in update: archerArr[0].myColor: ' + this.archerArr[0].myColor);
-            this.sound.play('select');
-            //pass archer array into the tourney scene
-            this.scene.start('tourneyScene', {
-                a1: this.archerArr[0], 
-                a2: this.archerArr[1],
-                a3: this.archerArr[2],
-                a4: this.archerArr[3],
-                a5: this.archerArr[4]});
+ 
         }
 
 
@@ -73,11 +155,6 @@ class Prep extends Phaser.Scene
         this.bet4text.text = 'Bet:\n' + this.archerArr[3].myBet;
         this.bet5text.text = 'Bet:\n' + this.archerArr[4].myBet;
         
-    }
-
-    swapScene()
-    {
-
     }
 
     createOptions()
@@ -138,15 +215,11 @@ class Prep extends Phaser.Scene
 
         //instruction text
         this.title = this.add.text(game.config.width/4.3, 40, 'Choose Your Sabotages', menuConfig).setOrigin(0.5);
-        this.instructions = this.add.text(game.config.width/4, 60, 'Click the name to buy it for the next round', menuConfig).setOrigin(0.5);
-        this.instructions.setFontSize(20);
+        //this.instructions = this.add.text(game.config.width/4, 60, 'Click the name to buy it for the next round', menuConfig).setOrigin(0.5);
+        //this.instructions.setFontSize(20);
 
         //ready prompt
         this.ready = this.add.text(game.config.width - 100, game.config.height + - 35, 'Ready to Go', menuConfig).setOrigin(0.5);
-        this.ready.setInteractive();
-        this.ready.on('pointerdown', function (startup) {
-            this.scene.start('tourneyScene');
-        });
 
         this.moneyText = this.add.text(game.config.width / 2, game.config.height - 100, 'Money:', menuConfig).setOrigin(0.5);
         
@@ -173,7 +246,7 @@ class Prep extends Phaser.Scene
         option5.setInteractive();
         option6.setInteractive();
         this.ready.setInteractive();
-
+        
         //Air horn
         option1.on('pointerdown', function (checking) {
             if(bought_1 == false && money >= sab1p)
@@ -182,6 +255,7 @@ class Prep extends Phaser.Scene
                     box1filled = "horn";
                     box1.setTexture('horn');
                     box1.setAlpha(1);
+                    
                 }
                 else if(box2filled == "none"){
                     box2filled = "horn";

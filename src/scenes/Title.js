@@ -32,7 +32,7 @@ class Title extends Phaser.Scene
             targets: this.intro,
             scale: {from: 0.1, to: 1},
             alpha: {from: 0, to: 1},
-            duration: 500,
+            duration: 300,
             ease: "Sine.easeInOut",
             paused: true 
 
@@ -41,7 +41,7 @@ class Title extends Phaser.Scene
         this.introOut = this.tweens.add({
             targets: this.intro,
             scale: {from: 1, to: 0},
-            duration: 500,
+            duration: 300,
             ease: "Sine.easeInOut",
             paused: true
         });
@@ -56,6 +56,7 @@ class Title extends Phaser.Scene
             }
             else{
                 this.introOut.play();
+                rundownCheck = true;
                 this.time.delayedCall(500, () => {
                     this.scene.start('prepScene');
                 })
@@ -65,6 +66,7 @@ class Title extends Phaser.Scene
             if(this.introCheck){
                 this.sound.play('select');
                 this.introOut.play();
+                rundownCheck = false;
                 this.time.delayedCall(500, () => {
                     this.scene.start('prepScene');
                 })

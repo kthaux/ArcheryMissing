@@ -74,6 +74,7 @@ let betConfig = {
 }
 
 let tap, spacebar;
+let rundownCheck = false;
 let option1Count, option2Count, option3Count, option4Count, option5Count, option6Count;
 let money = 1000;
 let bought_1 = false;
