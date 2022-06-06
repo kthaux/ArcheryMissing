@@ -55,6 +55,7 @@ class Title extends Phaser.Scene
                 this.introCheck = true;
             }
             else{
+                this.sound.play('select');
                 this.introOut.play();
                 rundownCheck = true;
                 this.time.delayedCall(500, () => {

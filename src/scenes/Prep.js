@@ -111,6 +111,7 @@ class Prep extends Phaser.Scene
         
         if (Phaser.Input.Keyboard.JustDown(spacebar))
         {
+            this.sound.play('select');
             if(rundownCheck){
                 if(this.spaceCount == 4){
                     this.LeftOut.play();
@@ -637,6 +638,7 @@ class Prep extends Phaser.Scene
         option6.on('pointerdown', function (checking) {
             if(bought_6 == false && money >= sab6p)
             {
+                this.sound.play('hit1');                                // SOUND
                 if(box1filled == "none"){
                     box1filled = "fight";
                     box1.setTexture('fight');
@@ -674,6 +676,7 @@ class Prep extends Phaser.Scene
             }
             else if(bought_6 == true)
             {
+                this.sound.play('hit2');                            // SOUND
                 bought_6 = false;
                 option6.setStyle(optionConfig);
                 money += sab6p;
