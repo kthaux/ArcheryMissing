@@ -62,7 +62,19 @@ let statsConfig = {
     },
 }
 
+let betConfig = {
+    fontFamily: 'Courier',
+    fontSize: '15px',
+    color: '#FF0000',
+    align: 'right',
+    padding: {
+    top: 5,
+    bottom: 5,
+    },
+}
+
 let tap, spacebar;
+let rundownCheck = false;
 let option1Count, option2Count, option3Count, option4Count, option5Count, option6Count;
 let money = 1000;
 let bought_1 = false;

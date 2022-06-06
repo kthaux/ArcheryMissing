@@ -5,10 +5,29 @@ class Prep extends Phaser.Scene
         super('prepScene');
     }
 
-    create() 
+    //TODO: function to handle money adjustments to verify that enough money is available
+    adjustMoney(amount, sign)
     {
+        if(sign > 0)
+        {
+            money = money + amount;
+        }
+        else if(sign < 0)
+        {
+            if((money - amount) < 0)
+            {
+                //flash red text maybe?
+                console.log('not enough money to make purchase/bet');
+            }
+            else if((money - amount) >= 0)
+            {
+                money = money - amount;
+            }
+        }
+    }
 
-        
+    create() 
+    {        
         //set up ui text and info for the prep scene
         this.createOptions();
 
@@ -19,36 +38,145 @@ class Prep extends Phaser.Scene
 
         //create archers with randomized stats
         this.createArchers();
-        
 
+        let menuConfig = {
+            fontFamily: 'Copperplate',
+            fontSize: '30px',
+            color: '#3ae0c5',
+            align: 'center',
+            padding: {
+            top: 5,
+            bottom: 5,
+            },
+            fixedWidth: 750
+        }
 
-        
+        if(rundownCheck){
+            this.spaceCount = 0;
+            this.leftInstruct = this.add.rectangle(0, 0, game.config.width / 2.4, game.config.height, 0x525252).setOrigin(0, 0);
+            this.rightInstruct = this.add.rectangle(game.config.width / 1.7, 0, game.config.width / 2.4, game.config.height, 0x525252).setOrigin(0, 0);
+            this.rundown = this.add.text(game.config.width/1.25, game.config.height / 2.25, "So here's the deal,\nI'm tryna leave this tourney\nwith as much money as I can.\n\nI'm starting this with $1,000.\n\nPress Space", menuConfig).setOrigin(0.5);
+
+            this.LeftOut = this.tweens.add({
+                targets: this.leftInstruct,
+                alpha: {from: 1, to: 0},
+                duration: 500,
+                ease: "Sine.easeInOut",
+                paused: true,
+
+            });
+
+            this.LeftIn = this.tweens.add({
+                targets: this.leftInstruct,
+                alpha: {from: 0, to: 1},
+                duration: 500,
+                ease: "Sine.easeInOut",
+                paused: true,
+
+            });
+
+            this.RightOut = this.tweens.add({
+                targets: this.rightInstruct,
+                alpha: {from: 1, to: 0},
+                duration: 500,
+                ease: "Sine.easeInOut",
+                paused: true,
+
+            });
+
+            this.rundownOut = this.tweens.add({
+                targets: this.rundown,
+                scale: {from: 1, to: 0},
+                duration: 100,
+                ease: "Sine.easeInOut",
+                paused: true
+            });
+
+            this.rundownIn = this.tweens.add({
+                targets: this.rundown,
+                scale: {from: 0, to: 1},
+                duration: 100,
+                ease: "Sine.easeInOut",
+                paused: true
+            });
+
+        }
     }
+
+    
 
     update()
     {
         
         if (Phaser.Input.Keyboard.JustDown(spacebar))
         {
+            if(rundownCheck){
+                if(this.spaceCount == 4){
+                    this.LeftOut.play();
+                    this.rundownOut.play();
+                    this.time.delayedCall(500, () => {
+                        this.leftInstruct.destroy();
+                        this.rundown.destroy();
+                        rundownCheck = false;
+                    })
+                }
+                if(this.spaceCount == 3){
+                    this.spaceCount += 1;
+                    this.rundown.text = "That's all I got for ya.\n\nNow let's sabotage!\n\nPress Space to begin playing"
+                }
+                if(this.spaceCount == 2){
+                    this.spaceCount += 1;
+                    this.rundown.text = "Press space once you're done\nbetting and purchasing\nsabotages.\n\nYou'll see who won and\nhow much money we got.\n\nPress Space"
+                }
+                if (this.spaceCount == 1) {
+                    this.spaceCount += 1;
+                    this.LeftIn.play();
+                    this.RightOut.play();
+                    this.rundownOut.play();
+                    this.time.delayedCall(500, () => {
+                        this.rightInstruct.destroy();
+                        this.rundown.x = 250;
+                        this.rundown.text = "These are stats on the\narchers we're sabotaging.\n\nSabotages affect them\ndifferently, which we're gonna\ncapitalize on.\n\nClicking the orange plus next\nto any archer will put $50 into\nyour bet, and pressing minus\ntakes $50 out.\n\nPress Space"
+                        this.rundownIn.play();
+                        
+                    })
+                }
+                if(this.spaceCount == 0){
+                    this.spaceCount += 1;
+                    this.LeftOut.play();
+                    this.time.delayedCall(500, () => {
+                        this.rundown.text = "These here are the sabotages.\n\nHover the mouse over one\nto get some info on it,\nlike how much it costs.\n\nClick it to add it to your\ninventory, click it again to\nremove it.\n\nPress Space"
+                    })
+                }
+                
+            } else{
+                this.sound.play('select');
+                //pass archer array into the tourney scene
+                this.scene.start('tourneyScene', {
+                    a1: this.archerArr[0], 
+                    a2: this.archerArr[1],
+                    a3: this.archerArr[2],
+                    a4: this.archerArr[3],
+                    a5: this.archerArr[4]});
+            }
             //console.log('in update: archerArr[0].myColor: ' + this.archerArr[0].myColor);
-            this.sound.play('select');
-            this.scene.start('tourneyScene', {
-                a1: this.archerArr[0], 
-                a2: this.archerArr[1],
-                a3: this.archerArr[2],
-                a4: this.archerArr[3],
-                a5: this.archerArr[4]});
+ 
         }
 
 
+<<<<<<< HEAD
         //keep money count up do date every frame
         this.moneyText.text = money;
+=======
+        //keep money and bet count up do date every frame
+        this.moneyText.text = "Money: " + money;
+        this.bet1text.text = 'Bet:\n' + this.archerArr[0].myBet;
+        this.bet2text.text = 'Bet:\n' + this.archerArr[1].myBet;
+        this.bet3text.text = 'Bet:\n' + this.archerArr[2].myBet;
+        this.bet4text.text = 'Bet:\n' + this.archerArr[3].myBet;
+        this.bet5text.text = 'Bet:\n' + this.archerArr[4].myBet;
+>>>>>>> 0dd35a704d59e23f7d9bfbe002634877968de265
         
-    }
-
-    swapScene()
-    {
-
     }
 
     createOptions()
@@ -108,15 +236,25 @@ class Prep extends Phaser.Scene
         box6.setAlpha(0);
 
         //instruction text
+<<<<<<< HEAD
         //this.title = this.add.text(game.config.width/4.3, 40, 'Choose Your Sabotages', menuConfig).setOrigin(0.5);
+=======
+        this.title = this.add.text(game.config.width/4.3, 40, 'Choose Your Sabotages', menuConfig).setOrigin(0.5);
+>>>>>>> 0dd35a704d59e23f7d9bfbe002634877968de265
         //this.instructions = this.add.text(game.config.width/4, 60, 'Click the name to buy it for the next round', menuConfig).setOrigin(0.5);
         //this.instructions.setFontSize(20);
 
         //ready prompt
+<<<<<<< HEAD
         this.ready = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'ready').setOrigin(0);
         //this.ready = this.add.text(game.config.width - 200, game.config.height + - 35, 'Press Space When Ready', menuConfig).setOrigin(0.5);
 
         this.moneyText = this.add.text(game.config.width / 2 + 165, game.config.height - 35, 'Money:', menuConfig).setOrigin(0.5);
+=======
+        this.ready = this.add.text(game.config.width - 100, game.config.height + - 35, 'Ready to Go', menuConfig).setOrigin(0.5);
+
+        this.moneyText = this.add.text(game.config.width / 2, game.config.height - 100, 'Money:', menuConfig).setOrigin(0.5);
+>>>>>>> 0dd35a704d59e23f7d9bfbe002634877968de265
         
         //add option text
         let option1 = this.add.text(game.config.width / 8, game.config.height / 6, 'Air Horn', optionConfig).setOrigin(0.5);
@@ -127,10 +265,10 @@ class Prep extends Phaser.Scene
         let option6 = this.add.text(game.config.width / 3, game.config.height / 1.5, 'Rumble', optionConfig).setOrigin(0.5);
 
         let option1des = this.add.text(game.config.width / 8.25, game.config.height / 3.75, 'The good ole fashioned.\nDisturbing the peace since \n19-whenever this thing \nwas invented.\n\nCost: $' + sab1p, optionDes).setOrigin(0.5);
-        let option2des = this.add.text(game.config.width / 8.25, game.config.height / 1.95, "They'll think it's for air\nconditioning. It probably\nwould be if it wasn't\nthe middle of winter.\n\nCost: $"+ sab2p, optionDes).setOrigin(0.5);
+        let option2des = this.add.text(game.config.width / 8.25, game.config.height / 1.95, "They'll think it's for air\nconditioning. They don't know\nit's as strong as a jet\nturbine. Probably still\ngood for air conditioning.\n\nCost: $"+ sab2p, optionDes).setOrigin(0.5);
         let option3des = this.add.text(game.config.width / 8.25, game.config.height * 0.78, "The nice thing about\nsupplying arrows for the\narchers is that they can't\ncomplain when the\narrows are made of lead.\n\nCost: $"+ sab3p, optionDes).setOrigin(0.5);
         let option4des = this.add.text(game.config.width / 3, game.config.height / 3.6, "I considered having archers\nuse crossbows since they're\ntechnically still bows, but I\ndecided that flimsy and unreliable\nbows would be funnier.\n\nCost: $"+ sab4p, optionDes).setOrigin(0.5);
-        let option5des = this.add.text(game.config.width / 3, game.config.height / 1.99, "My pal Sammy has a massive bird\ncoop. Let's just say they'll\nbe flying south for the winter.\n\nCost: $"+ sab5p, optionDes).setOrigin(0.5);
+        let option5des = this.add.text(game.config.width / 3, game.config.height / 1.99, "My pal Darrell has a massive bird\ncoop. Let's just say they'll\nbe flying south for the winter.\n\nCost: $"+ sab5p, optionDes).setOrigin(0.5);
         let option6des = this.add.text(game.config.width / 3, game.config.height * 0.77, "I have a friend. His name is\nDennis. Dennis tends to start\nfights. You can see where I'm\ngoing with this.\n\nCost: $"+ sab6p, optionDes).setOrigin(0.5);
         
         //set them to interactable
@@ -141,15 +279,16 @@ class Prep extends Phaser.Scene
         option5.setInteractive();
         option6.setInteractive();
         this.ready.setInteractive();
-
+        
         //Air horn
         option1.on('pointerdown', function (checking) {
-            if(bought_1 == false)
+            if(bought_1 == false && money >= sab1p)
             {
                 if(box1filled == "none"){
                     box1filled = "horn";
                     box1.setTexture('horn');
                     box1.setAlpha(1);
+                    
                 }
                 else if(box2filled == "none"){
                     box2filled = "horn";
@@ -178,10 +317,11 @@ class Prep extends Phaser.Scene
                 }
                 bought_1 = true;
                 option1.setStyle(optionConfig2);
-                money -= sab1p;
+                this.scene.adjustMoney(sab1p, -1)
+                //money -= sab1p;
             }
 
-            else {
+            else if(bought_1 == true){
                 if(box1filled == "horn"){
                     box1filled = "none";
                     box1.setAlpha(0);
@@ -214,7 +354,7 @@ class Prep extends Phaser.Scene
         });
         //Giant Fan
         option2.on('pointerdown', function (checking) {
-            if(bought_2 == false)
+            if(bought_2 == false && money >= sab2p)
             {
                 if(box1filled == "none"){
                     box1filled = "fan";
@@ -286,7 +426,7 @@ class Prep extends Phaser.Scene
         });
         //Bent Arrows
         option3.on('pointerdown', function (checking) {
-            if(bought_3 == false)
+            if(bought_3 == false && money >= sab3p)
             {
                 if(box1filled == "none"){
                     box1filled = "bentarrow";
@@ -358,7 +498,7 @@ class Prep extends Phaser.Scene
         });
         //misaligned bow
         option4.on('pointerdown', function (checking) {
-            if(bought_4 == false)
+            if(bought_4 == false && money >= sab4p)
             {
                 if(box1filled == "none"){
                     box1filled = "misbow";
@@ -430,7 +570,7 @@ class Prep extends Phaser.Scene
         });
         //release birds
         option5.on('pointerdown', function (checking) {
-            if(bought_5 == false)
+            if(bought_5 == false && money >= sab5p)
             {
                 if(box1filled == "none"){
                     box1filled = "bird";
@@ -502,7 +642,7 @@ class Prep extends Phaser.Scene
         });
         //cause a fight
         option6.on('pointerdown', function (checking) {
-            if(bought_6 == false)
+            if(bought_6 == false && money >= sab6p)
             {
                 if(box1filled == "none"){
                     box1filled = "fight";
@@ -666,12 +806,13 @@ class Prep extends Phaser.Scene
         //print stats  in the stat block
         for(let i = 0; i < 5; i++)
         {
+            //print the betting ratio of each archer
             this.add.text(this.archerArr[i].x + 75, this.archerArr[i].y + 25, 'Ratio: ' + this.archerArr[i].myRatio, statsConfig).setOrigin(0.5);
-
-
+            //display the arrows for each archer's pos and neg trait
             this.add.sprite(this.archerArr[i].x + 30, this.archerArr[i].y + 60, 'upArrow');
             this.add.sprite(this.archerArr[i].x + 30, this.archerArr[i].y + 120, 'downArrow');
-
+            
+            //display each archer's pos trait icon
             switch(this.archerArr[i].myPosTrait)
             {
                 case 0:
@@ -693,7 +834,7 @@ class Prep extends Phaser.Scene
                     this.add.sprite(this.archerArr[i].x + 100, this.archerArr[i].y + 60, 'fight').setScale(0.3);
                     break;
             }
-
+            //display each archer's neg trait icon
             switch(this.archerArr[i].myNegTrait)
             {
                 case 0:
@@ -715,10 +856,152 @@ class Prep extends Phaser.Scene
                     this.add.sprite(this.archerArr[i].x + 100, this.archerArr[i].y + 120, 'fight').setScale(0.3);
                     break;
             }
+
         }
+
+        //display the plus and minus icons for increasing and decreasing betting values
+        //archer 1
+        this.plus1 = this.add.sprite(this.archerArr[0].x - 30, this.archerArr[0].y + 20, 'plus');
+        this.plus1.setInteractive({
+            useHandCursor: true
+        });
+        this.plus1.on('pointerdown', function (pointer){
+            if((money - 50) >= 0)
+                this.scene.archerArr[0].myBet += 50;
+            this.scene.adjustMoney(50, -1);
+            //money -= 50;
+        });
+
+        this.minus1 = this.add.sprite(this.archerArr[0].x - 30, this.archerArr[0].y + 70, 'minus');
+        this.minus1.setInteractive({
+            useHandCursor: true
+        });
+        this.minus1.on('pointerdown', function (pointer){
+            //keep bet from going negative
+            if(this.scene.archerArr[0].myBet > 0)
+            {
+                this.scene.archerArr[0].myBet -= 50;
+                this.scene.adjustMoney(50, 1);
+                //money += 50;
+            }
+        });
+
+        this.bet1text = this.add.text(this.archerArr[0].x - 30, this.archerArr[0].y + 110, 'Bet:\n' + this.archerArr[0].myBet, betConfig).setOrigin(0.5);
+
+        //archer 2
+        this.plus2 = this.add.sprite(this.archerArr[1].x - 30, this.archerArr[1].y + 20, 'plus');
+        this.plus2.setInteractive({
+            useHandCursor: true
+        });
+        this.plus2.on('pointerdown', function (pointer){
+            if((money - 50) >= 0)
+                this.scene.archerArr[1].myBet += 50;
+            this.scene.adjustMoney(50, -1);
+            //money -= 50;
+        });
+
+        this.minus2 = this.add.sprite(this.archerArr[1].x - 30, this.archerArr[1].y + 70, 'minus');
+        this.minus2.setInteractive({
+            useHandCursor: true
+        });
+        this.minus2.on('pointerdown', function (pointer){
+            //keep bet from going negative
+            if(this.scene.archerArr[1].myBet > 0)
+            {
+                this.scene.archerArr[1].myBet -= 50;
+                this.scene.adjustMoney(50, 1);
+                //money += 50;
+            }
+        });
+
+        this.bet2text = this.add.text(this.archerArr[1].x - 30, this.archerArr[1].y + 110, 'Bet:\n' + this.archerArr[1].myBet, betConfig).setOrigin(0.5);
+
+        //archer 3
+        this.plus3 = this.add.sprite(this.archerArr[2].x - 30, this.archerArr[2].y + 20, 'plus');
+        this.plus3.setInteractive({
+            useHandCursor: true
+        });
+        this.plus3.on('pointerdown', function (pointer){
+            if((money - 50) >= 0)
+                this.scene.archerArr[2].myBet += 50;
+            this.scene.adjustMoney(50, -1);
+            //money -= 50;
+        });
+
+        this.minus3 = this.add.sprite(this.archerArr[2].x - 30, this.archerArr[2].y + 70, 'minus');
+        this.minus3.setInteractive({
+            useHandCursor: true
+        });
+        this.minus3.on('pointerdown', function (pointer){
+            //keep bet from going negative
+            if(this.scene.archerArr[2].myBet > 0)
+            {
+                this.scene.archerArr[2].myBet -= 50;
+                this.scene.adjustMoney(50, 1);
+                //money += 50;
+            }
+        });
+
+        this.bet3text = this.add.text(this.archerArr[2].x - 30, this.archerArr[2].y + 110, 'Bet:\n' + this.archerArr[2].myBet, betConfig).setOrigin(0.5);
+
+        //archer 4
+        this.plus4 = this.add.sprite(this.archerArr[3].x - 30, this.archerArr[3].y + 20, 'plus');
+        this.plus4.setInteractive({
+            useHandCursor: true
+        });
+        this.plus4.on('pointerdown', function (pointer){
+            if((money - 50) >= 0)
+                this.scene.archerArr[3].myBet += 50;
+            this.scene.adjustMoney(50, -1);
+            //money -= 50;
+        });
+
+        this.minus4 = this.add.sprite(this.archerArr[3].x - 30, this.archerArr[3].y + 70, 'minus');
+        this.minus4.setInteractive({
+            useHandCursor: true
+        });
+        this.minus4.on('pointerdown', function (pointer){
+            //keep bet from going negative
+            if(this.scene.archerArr[3].myBet > 0)
+            {
+                this.scene.archerArr[3].myBet -= 50;
+                this.scene.adjustMoney(50, 1);
+                //money += 50;
+            }
+        });
+
+        this.bet4text = this.add.text(this.archerArr[3].x - 30, this.archerArr[3].y + 110, 'Bet:\n' + this.archerArr[3].myBet, betConfig).setOrigin(0.5);
+
+        //archer 5
+        this.plus5 = this.add.sprite(this.archerArr[4].x - 30, this.archerArr[4].y + 20, 'plus');
+        this.plus5.setInteractive({
+            useHandCursor: true
+        });
+        this.plus5.on('pointerdown', function (pointer){
+            if((money - 50) >= 0)
+                this.scene.archerArr[4].myBet += 50;
+            this.scene.adjustMoney(50, -1);
+            //money -= 50;
+        });
+
+        this.minus5 = this.add.sprite(this.archerArr[4].x - 30, this.archerArr[4].y + 70, 'minus');
+        this.minus5.setInteractive({
+            useHandCursor: true
+        });
+        this.minus5.on('pointerdown', function (pointer){
+            //keep bet from going negative
+            if(this.scene.archerArr[4].myBet > 0)
+            {
+                this.scene.archerArr[4].myBet -= 50;
+                this.scene.adjustMoney(50, 1);
+                //money += 50;
+            }
+        });
+
+        this.bet5text = this.add.text(this.archerArr[4].x - 30, this.archerArr[4].y + 110, 'Bet:\n' + this.archerArr[4].myBet, betConfig).setOrigin(0.5);
     }
 
-    
+
 
     getRandHexColor()
     {
