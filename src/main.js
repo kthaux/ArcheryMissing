@@ -7,7 +7,7 @@ let config = {
 };
 
 let menuConfig = {
-    fontFamily: 'Courier',
+    fontFamily: 'Minecraft',
     fontSize: '28px',
     color: '#1FEA18',
     align: 'right',
@@ -18,7 +18,7 @@ let menuConfig = {
 }
 
 let moneyConfig = {
-    fontFamily: 'Boxy-Bold',
+    fontFamily: 'Minecraft',
     fontSize: '28px',
     color: '#44891a',
     align: 'right',
@@ -29,7 +29,7 @@ let moneyConfig = {
 }
 
 let optionConfig = {
-    fontFamily: 'Courier',
+    fontFamily: 'Minecraft',
     fontSize: '24px',
     color: '#FF0000',
     align: 'right',
@@ -40,7 +40,7 @@ let optionConfig = {
 }
 
 let optionConfig2 = {
-    fontFamily: 'Courier',
+    fontFamily: 'Minecraft',
     fontSize: '24px',
     color: '#59FF20',
     align: 'right',
@@ -51,7 +51,7 @@ let optionConfig2 = {
 }
 
 let optionDes = {
-    fontFamily: 'Courier',
+    fontFamily: 'Minecraft',
     fontSize: '14px',
     color: '#000000',
     align: 'center',
@@ -63,7 +63,7 @@ let optionDes = {
 }
 
 let statsConfig = {
-    fontFamily: 'Courier',
+    fontFamily: 'Minecraft',
     fontSize: '18px',
     color: '#FF0000',
     align: 'right',
@@ -74,7 +74,7 @@ let statsConfig = {
 }
 
 let betConfig = {
-    fontFamily: 'Courier',
+    fontFamily: 'Minecraft',
     fontSize: '15px',
     color: '#FF0000',
     align: 'right',

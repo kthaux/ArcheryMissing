@@ -8,7 +8,7 @@ class Title extends Phaser.Scene
     create() 
     {
         let menuConfig = {
-            fontFamily: 'Copperplate',
+            fontFamily: 'Minecraft',
             fontSize: '30px',
             backgroundColor: '#CBBEB5',
             color: '#106e55',

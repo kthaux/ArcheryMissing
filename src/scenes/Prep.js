@@ -40,7 +40,7 @@ class Prep extends Phaser.Scene
         this.createArchers();
 
         let menuConfig = {
-            fontFamily: 'Copperplate',
+            fontFamily: 'Minecraft',
             fontSize: '30px',
             color: '#3ae0c5',
             align: 'center',
@@ -242,7 +242,7 @@ class Prep extends Phaser.Scene
         //ready prompt
         this.ready = this.add.text(game.config.width - 10000, game.config.height + - 35000, 'Ready to Go', menuConfig).setOrigin(0.5);
 
-        this.moneyText = this.add.text(game.config.width / 2 + 50, game.config.height - 35, 'Money:', moneyConfig).setOrigin(0.5);
+        this.moneyText = this.add.text(game.config.width / 2 + 70, game.config.height - 37, 'Money:', moneyConfig).setOrigin(0.5);
 
         this.done = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'done').setOrigin(0);
         
