@@ -25,6 +25,10 @@ class Load extends Phaser.Scene
         this.load.image('fight', 'assets/fight.png');
         
         this.load.audio('select', 'assets/selection.wav');                  // made via https://sfbgames.itch.io/chiptone
+        this.load.audio('highSelect', 'assets/highselection.wav');
+        this.load.audio('hit1', 'assets/hit1.wav');
+        this.load.audio('hit2', 'assets/hit2.wav');
+        this.load.audio('airhorn', 'assets/airhorn.wav');
     }
 
     create() 
