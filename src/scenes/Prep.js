@@ -278,7 +278,7 @@ class Prep extends Phaser.Scene
         option1.on('pointerdown', function (checking) {
             if(bought_1 == false && money >= sab1p)
             {
-                this.sound.play('airhorn');
+                this.sound.play('airhorn');                                                         // SOUND
                 if(box1filled == "none"){
                     box1filled = "horn";
                     box1.setTexture('horn');
@@ -317,7 +317,7 @@ class Prep extends Phaser.Scene
             }
 
             else if(bought_1 == true){
-                this.sound.play('airhorn');
+                this.sound.play('airhorn');                                         // SOUND
                 if(box1filled == "horn"){
                     box1filled = "none";
                     box1.setAlpha(0);
