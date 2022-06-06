@@ -19,7 +19,7 @@ class Tourney extends Phaser.Scene
 
         this.title = this.add.text(game.config.width/2, game.config.height/2, 'TOURNEY SCREEN TEXT', menuConfig).setOrigin(0.5);
         spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE); 
-        this.add.rectangle(0, game.config.height - 70, game.config.width, game.config.height / 8, 0xFF7400).setOrigin(0, 0);
+        this.add.rectangle(0, game.config.height - 70, game.config.width, game.config.height / 8, 0x16ca9f).setOrigin(0, 0);
 
 
         this.findWinner();
