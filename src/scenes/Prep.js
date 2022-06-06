@@ -111,6 +111,23 @@ class Prep extends Phaser.Scene
         if (Phaser.Input.Keyboard.JustDown(spacebar))
         {
             if(rundownCheck){
+                if(this.spaceCount == 4){
+                    this.LeftOut.play();
+                    this.rundownOut.play();
+                    this.time.delayedCall(500, () => {
+                        this.leftInstruct.destroy();
+                        this.rundown.destroy();
+                        rundownCheck = false;
+                    })
+                }
+                if(this.spaceCount == 3){
+                    this.spaceCount += 1;
+                    this.rundown.text = "That's all I got for ya.\n\nNow let's sabotage!\n\nPress Space to begin playing"
+                }
+                if(this.spaceCount == 2){
+                    this.spaceCount += 1;
+                    this.rundown.text = "Press space once you're done\nbetting and purchasing\nsabotages.\n\nYou'll see who won and\nhow much money we got.\n\nPress Space"
+                }
                 if (this.spaceCount == 1) {
                     this.spaceCount += 1;
                     this.LeftIn.play();
@@ -119,7 +136,7 @@ class Prep extends Phaser.Scene
                     this.time.delayedCall(500, () => {
                         this.rightInstruct.destroy();
                         this.rundown.x = 250;
-                        this.rundown.text = "These are stats on the\narchers we're sabotaging.\n\nIt basically means how likely\nsome are to get distracted\nby certain sabotages or not.\n\nClick the orange plus next to\nany archer to bet money,\nor press the blue minus\nto undo that.\n\nPress Space"
+                        this.rundown.text = "These are stats on the\narchers we're sabotaging.\n\nSabotages affect them\ndifferently, which we're gonna\ncapitalize on.\n\nClick the orange plus next to\nany archer to bet money,\nor press the blue minus\nto undo that.\n\nPress Space"
                         this.rundownIn.play();
                         
                     })
