@@ -19,6 +19,8 @@ class Title extends Phaser.Scene
             },
             fixedWidth: 750
         }
+        this.bgMusic = this.sound.add('bgm', { volume: 0.20, loop: true });
+        this.bgMusic.play();
 
         this.bg = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'bg').setOrigin(0);
         spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE); 

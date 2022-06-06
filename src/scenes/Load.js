@@ -29,6 +29,7 @@ class Load extends Phaser.Scene
         this.load.audio('hit1', 'assets/hit1.wav');
         this.load.audio('hit2', 'assets/hit2.wav');
         this.load.audio('airhorn', 'assets/airhorn.wav');
+        this.load.audio('bgm', 'assets/bgm.wav');                           // made via bosca ceoil
     }
 
     create() 
