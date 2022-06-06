@@ -42,7 +42,7 @@ class Prep extends Phaser.Scene
 
 
         //keep money count up do date every frame
-        this.moneyText.text = "Money: " + money;
+        this.moneyText.text = money;
         
     }
 
@@ -53,7 +53,7 @@ class Prep extends Phaser.Scene
 
     createOptions()
     {
-
+        this.test = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'test').setOrigin(0);
         this.option1Count = 0;
         this.option2Count = 0;
         this.option3Count = 0;
@@ -64,7 +64,7 @@ class Prep extends Phaser.Scene
         //spacebar key input
         spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         //bottom status bar
-        this.add.rectangle(0, game.config.height - 70, game.config.width, game.config.height / 8, 0xCBBEB5).setOrigin(0, 0);
+        this.add.rectangle(0, game.config.height - 70, game.config.width, game.config.height / 8, 0x4b4b4b).setOrigin(0, 0);
 
         //archer cardbacks
         this.add.rectangle(800, 50, 150, 150, 0xFFFFFF).setOrigin(0, 0);
@@ -76,12 +76,12 @@ class Prep extends Phaser.Scene
         this.add.rectangle(900, 400, 150, 150, 0xFFFFFF).setOrigin(0, 0);
 
         //inventory slots
-        this.add.rectangle(10, game.config.height / 1.105, 55, 55, 0x545454).setOrigin(0, 0);
-        this.add.rectangle(80, game.config.height / 1.105, 55, 55, 0x545454).setOrigin(0, 0);
-        this.add.rectangle(150, game.config.height / 1.105, 55, 55, 0x545454).setOrigin(0, 0);
-        this.add.rectangle(220, game.config.height / 1.105, 55, 55, 0x545454).setOrigin(0, 0);
-        this.add.rectangle(290, game.config.height / 1.105, 55, 55, 0x545454).setOrigin(0, 0);
-        this.add.rectangle(360, game.config.height / 1.105, 55, 55, 0x545454).setOrigin(0, 0);
+        this.add.rectangle(10, game.config.height / 1.105, 55, 55, 0x161616).setOrigin(0, 0);
+        this.add.rectangle(80, game.config.height / 1.105, 55, 55, 0x161616).setOrigin(0, 0);
+        this.add.rectangle(150, game.config.height / 1.105, 55, 55, 0x161616).setOrigin(0, 0);
+        this.add.rectangle(220, game.config.height / 1.105, 55, 55, 0x161616).setOrigin(0, 0);
+        this.add.rectangle(290, game.config.height / 1.105, 55, 55, 0x161616).setOrigin(0, 0);
+        this.add.rectangle(360, game.config.height / 1.105, 55, 55, 0x161616).setOrigin(0, 0);
         let box1 = this.add.sprite(40, game.config.height / 1.055, 'horn');
         let box2 = this.add.sprite(110, game.config.height / 1.055, 'horn');
         let box3 = this.add.sprite(180, game.config.height / 1.055, 'horn');
@@ -108,14 +108,15 @@ class Prep extends Phaser.Scene
         box6.setAlpha(0);
 
         //instruction text
-        this.title = this.add.text(game.config.width/4.3, 40, 'Choose Your Sabotages', menuConfig).setOrigin(0.5);
-        this.instructions = this.add.text(game.config.width/4, 60, 'Click the name to buy it for the next round', menuConfig).setOrigin(0.5);
-        this.instructions.setFontSize(20);
+        //this.title = this.add.text(game.config.width/4.3, 40, 'Choose Your Sabotages', menuConfig).setOrigin(0.5);
+        //this.instructions = this.add.text(game.config.width/4, 60, 'Click the name to buy it for the next round', menuConfig).setOrigin(0.5);
+        //this.instructions.setFontSize(20);
 
         //ready prompt
-        this.ready = this.add.text(game.config.width - 200, game.config.height + - 35, 'Press Space When Ready', menuConfig).setOrigin(0.5);
+        this.ready = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'ready').setOrigin(0);
+        //this.ready = this.add.text(game.config.width - 200, game.config.height + - 35, 'Press Space When Ready', menuConfig).setOrigin(0.5);
 
-        this.moneyText = this.add.text(game.config.width / 2, game.config.height - 50, 'Money:', menuConfig).setOrigin(0.5);
+        this.moneyText = this.add.text(game.config.width / 2 + 165, game.config.height - 35, 'Money:', menuConfig).setOrigin(0.5);
         
         //add option text
         let option1 = this.add.text(game.config.width / 8, game.config.height / 6, 'Air Horn', optionConfig).setOrigin(0.5);
