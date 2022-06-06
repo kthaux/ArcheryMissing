@@ -242,7 +242,7 @@ class Prep extends Phaser.Scene
         //ready prompt
         this.ready = this.add.text(game.config.width - 10000, game.config.height + - 35000, 'Ready to Go', menuConfig).setOrigin(0.5);
 
-        this.moneyText = this.add.text(game.config.width / 2 + 175, game.config.height - 35, 'Money:', menuConfig).setOrigin(0.5);
+        this.moneyText = this.add.text(game.config.width / 2 + 160, game.config.height - 35, 'Money:', moneyConfig).setOrigin(0.5);
 
         this.done = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'done').setOrigin(0);
         
