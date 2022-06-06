@@ -165,7 +165,7 @@ class Prep extends Phaser.Scene
 
 
         //keep money and bet count up do date every frame
-        this.moneyText.text = "Money: " + money;
+        this.moneyText.text = money;
         this.bet1text.text = 'Bet:\n' + this.archerArr[0].myBet;
         this.bet2text.text = 'Bet:\n' + this.archerArr[1].myBet;
         this.bet3text.text = 'Bet:\n' + this.archerArr[2].myBet;
@@ -183,6 +183,10 @@ class Prep extends Phaser.Scene
         this.option4Count = 0;
         this.option5Count = 0;
         this.option6Count = 0;
+
+        //background and text
+        this.prepbg = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'prepbg').setOrigin(0);
+        
 
         //spacebar key input
         spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
@@ -230,15 +234,17 @@ class Prep extends Phaser.Scene
         box5.setAlpha(0);
         box6.setAlpha(0);
 
-        //instruction text
-        this.title = this.add.text(game.config.width/4.3, 40, 'Choose Your Sabotages', menuConfig).setOrigin(0.5);
+        
+        //this.title = this.add.text(game.config.width/4.3, 40, 'Choose Your Sabotages', menuConfig).setOrigin(0.5);
         //this.instructions = this.add.text(game.config.width/4, 60, 'Click the name to buy it for the next round', menuConfig).setOrigin(0.5);
         //this.instructions.setFontSize(20);
 
         //ready prompt
-        this.ready = this.add.text(game.config.width - 100, game.config.height + - 35, 'Ready to Go', menuConfig).setOrigin(0.5);
+        this.ready = this.add.text(game.config.width - 10000, game.config.height + - 35000, 'Ready to Go', menuConfig).setOrigin(0.5);
 
-        this.moneyText = this.add.text(game.config.width / 2, game.config.height - 100, 'Money:', menuConfig).setOrigin(0.5);
+        this.moneyText = this.add.text(game.config.width / 2 + 175, game.config.height - 35, 'Money:', menuConfig).setOrigin(0.5);
+
+        this.done = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'done').setOrigin(0);
         
         //add option text
         let option1 = this.add.text(game.config.width / 8, game.config.height / 6, 'Air Horn', optionConfig).setOrigin(0.5);
