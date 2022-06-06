@@ -136,7 +136,7 @@ class Prep extends Phaser.Scene
                     this.time.delayedCall(500, () => {
                         this.rightInstruct.destroy();
                         this.rundown.x = 250;
-                        this.rundown.text = "These are stats on the\narchers we're sabotaging.\n\nSabotages affect them\ndifferently, which we're gonna\ncapitalize on.\n\nClick the orange plus next to\nany archer to bet money,\nor press the blue minus\nto undo that.\n\nPress Space"
+                        this.rundown.text = "These are stats on the\narchers we're sabotaging.\n\nSabotages affect them\ndifferently, which we're gonna\ncapitalize on.\n\nClicking the orange plus next\nto any archer will put $50 into\nyour bet, and pressing minus\ntakes $50 out.\n\nPress Space"
                         this.rundownIn.play();
                         
                     })
