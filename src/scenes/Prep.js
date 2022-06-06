@@ -52,9 +52,10 @@ class Prep extends Phaser.Scene
         }
 
         if(rundownCheck){
+            this.moneyText.setAlpha(0);
             this.spaceCount = 0;
-            this.leftInstruct = this.add.rectangle(0, 0, game.config.width / 2.4, game.config.height, 0x525252).setOrigin(0, 0);
-            this.rightInstruct = this.add.rectangle(game.config.width / 1.7, 0, game.config.width / 2.4, game.config.height, 0x525252).setOrigin(0, 0);
+            this.leftInstruct = this.add.rectangle(0, 0, game.config.width / 1.9, game.config.height, 0x525252).setOrigin(0, 0);
+            this.rightInstruct = this.add.rectangle(game.config.width / 1.7, 0, game.config.width / 2, game.config.height, 0x525252).setOrigin(0, 0);
             this.rundown = this.add.text(game.config.width/1.25, game.config.height / 2.25, "So here's the deal,\nI'm tryna leave this tourney\nwith as much money as I can.\n\nI'm starting this with $1,000.\n\nPress Space", menuConfig).setOrigin(0.5);
 
             this.LeftOut = this.tweens.add({
@@ -130,12 +131,13 @@ class Prep extends Phaser.Scene
                 }
                 if (this.spaceCount == 1) {
                     this.spaceCount += 1;
+                    this.leftInstruct.y -= 70;
                     this.LeftIn.play();
                     this.RightOut.play();
                     this.rundownOut.play();
                     this.time.delayedCall(500, () => {
                         this.rightInstruct.destroy();
-                        this.rundown.x = 250;
+                        this.rundown.x = 300;
                         this.rundown.text = "These are stats on the\narchers we're sabotaging.\n\nSabotages affect them\ndifferently, which we're gonna\ncapitalize on.\n\nClicking the orange plus next\nto any archer will put $50 into\nyour bet, and pressing minus\ntakes $50 out.\n\nPress Space"
                         this.rundownIn.play();
                         
@@ -146,6 +148,7 @@ class Prep extends Phaser.Scene
                     this.LeftOut.play();
                     this.time.delayedCall(500, () => {
                         this.rundown.text = "These here are the sabotages.\n\nHover the mouse over one\nto get some info on it,\nlike how much it costs.\n\nClick it to add it to your\ninventory, click it again to\nremove it.\n\nPress Space"
+                        this.moneyText.setAlpha(1);
                     })
                 }
                 
