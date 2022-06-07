@@ -20,6 +20,10 @@ class Title extends Phaser.Scene
             fixedWidth: 750
         }
         this.bgMusic = this.sound.add('bgm', { volume: 0.20, loop: true });
+        if(day > 1)
+        {
+            this.bgMusic.stop();
+        }
         this.bgMusic.play();
 
         this.bg = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'bg').setOrigin(0);
@@ -47,6 +51,9 @@ class Title extends Phaser.Scene
             ease: "Sine.easeInOut",
             paused: true
         });
+
+        //reset day count when returning to title
+        day = 1;
     }
 
     update(){

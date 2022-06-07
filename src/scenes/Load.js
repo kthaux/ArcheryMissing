@@ -31,6 +31,7 @@ class Load extends Phaser.Scene
         this.load.audio('select', 'assets/selection.mp3');                  // made via https://sfbgames.itch.io/chiptone
         this.load.audio('highSelect', 'assets/highselection.mp3');
         this.load.audio('bgm', 'assets/bgm.wav');                           // made via bosca ceoil
+        
     }
 
     create() 

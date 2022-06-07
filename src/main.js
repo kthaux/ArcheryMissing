@@ -3,7 +3,7 @@ let config = {
     width: 1200,
     height: 640,
     autoCenter: true,
-    scene: [Load, Title, Prep, Tourney],
+    scene: [Load, Title, Prep, Tourney, Credits],
 };
 
 let menuConfig = {
@@ -87,7 +87,9 @@ let betConfig = {
 let tap, spacebar;
 let rundownCheck = false;
 let option1Count, option2Count, option3Count, option4Count, option5Count, option6Count;
+let day = 1;
 let money = 1000;
+let earned = 0;
 let bought_1 = false;
 let bought_2 = false;
 let bought_3 = false;

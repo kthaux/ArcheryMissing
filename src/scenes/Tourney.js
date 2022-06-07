@@ -18,6 +18,7 @@ class Tourney extends Phaser.Scene
     {
 
         this.title = this.add.text(game.config.width/2, game.config.height/2, 'TOURNEY SCREEN TEXT', menuConfig).setOrigin(0.5);
+        this.day = this.add.text(game.config.width/2, game.config.height/2 - 30, 'Winner of Day ' + day + ':', menuConfig).setOrigin(0.5);
         spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE); 
         this.add.rectangle(0, game.config.height - 70, game.config.width, game.config.height / 8, 0x16ca9f).setOrigin(0, 0);
 
@@ -79,13 +80,14 @@ class Tourney extends Phaser.Scene
                 winner = i;
             }
         }
-
-        this.title.text = 'Winner: Archer #' + (winner + 1);
+        
+        this.title.text = 'Archer #' + (winner + 1);
         this.multiplierText = this.add.text(game.config.width/2, game.config.height/2 + 50, 'Payout Multiplier: ' + this.archerArr[winner].myRatio, menuConfig).setOrigin(0.5);
         if(this.archerArr[winner].myBet > 0)
         {
             this.payoutText = this.add.text(game.config.width/2, game.config.height/2 + 100, 'Payed out: ' + (this.archerArr[winner].myRatio * this.archerArr[winner].myBet), menuConfig).setOrigin(0.5);
             money += this.archerArr[winner].myRatio * this.archerArr[winner].myBet;
+            earned += this.archerArr[winner].myRatio * this.archerArr[winner].myBet;
         }
     }
 
@@ -100,9 +102,18 @@ class Tourney extends Phaser.Scene
             bought_4 = false;
             bought_5 = false;
             bought_6 = false;
+            day += 1;
             
             this.sound.play('select');
-            this.scene.start('prepScene');
+            if(day >= 6)
+            {
+                this.scene.start('creditsScene')
+            }
+            else
+            {
+                this.scene.start('prepScene');
+            }
+            
             
         }
     }

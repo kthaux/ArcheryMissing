@@ -102,6 +102,8 @@ class Prep extends Phaser.Scene
             });
 
         }
+
+        
     }
 
     
@@ -278,12 +280,7 @@ class Prep extends Phaser.Scene
         option1.on('pointerdown', () => {
             this.sound.play('highSelect');
             if(bought_1 == false && money >= sab1p)
-<<<<<<< HEAD
             {                                                        // SOUND
-=======
-            {
-                this.scene.sound.play('highSelect');                                                         // SOUND
->>>>>>> 223f7b0bd539dd7f32a43989ce5d546b5e471936
                 if(box1filled == "none"){
                     box1filled = "horn";
                     box1.setTexture('horn');
@@ -317,16 +314,11 @@ class Prep extends Phaser.Scene
                 }
                 bought_1 = true;
                 option1.setStyle(optionConfig2);
-                this.scene.adjustMoney(sab1p, -1)
+                this.adjustMoney(sab1p, -1)
                 //money -= sab1p;
             }
 
-<<<<<<< HEAD
             else if(bought_1 == true){                                        // SOUND
-=======
-            else if(bought_1 == true){
-                this.scene.sound.play('highSelect');                                         // SOUND
->>>>>>> 223f7b0bd539dd7f32a43989ce5d546b5e471936
                 if(box1filled == "horn"){
                     box1filled = "none";
                     box1.setAlpha(0);
@@ -354,19 +346,15 @@ class Prep extends Phaser.Scene
 
                 bought_1 = false;
                 option1.setStyle(optionConfig);
-                money += sab1p;
+                this.adjustMoney(sab1p, 1)
+                //money += sab1p;
             }
         });
         //Giant Fan
         option2.on('pointerdown', () => {
             this.sound.play('highSelect');
             if(bought_2 == false && money >= sab2p)
-<<<<<<< HEAD
             {                             // SOUND
-=======
-            {
-                this.scene.sound.play('highSelect');                              // SOUND
->>>>>>> 223f7b0bd539dd7f32a43989ce5d546b5e471936
                 if(box1filled == "none"){
                     box1filled = "fan";
                     box1.setTexture('fan');
@@ -400,15 +388,11 @@ class Prep extends Phaser.Scene
 
                 bought_2 = true;
                 option2.setStyle(optionConfig2);
-                money -= sab2p;
+                this.adjustMoney(sab2p, -1)
+                //money -= sab2p;
             }
             else if(bought_2 == true)
-<<<<<<< HEAD
             {                        
-=======
-            {
-                this.scene.sound.play('highSelect');                          // SOUND
->>>>>>> 223f7b0bd539dd7f32a43989ce5d546b5e471936
                 if(box1filled == "fan"){
                     box1filled = "none";
                     box1.setAlpha(0);
@@ -436,7 +420,8 @@ class Prep extends Phaser.Scene
 
                 bought_2 = false;
                 option2.setStyle(optionConfig);
-                money += sab2p;
+                this.adjustMoney(sab2p, 1)
+                //money += sab2p;
             }
             
         });
@@ -445,10 +430,6 @@ class Prep extends Phaser.Scene
             this.sound.play('highSelect');
             if(bought_3 == false && money >= sab3p)
             {
-<<<<<<< HEAD
-=======
-                this.scene.sound.play('highSelect');                          // SOUND
->>>>>>> 223f7b0bd539dd7f32a43989ce5d546b5e471936
                 if(box1filled == "none"){
                     box1filled = "bentarrow";
                     box1.setTexture('bentarrow');
@@ -482,14 +463,11 @@ class Prep extends Phaser.Scene
                 
                 bought_3 = true;
                 option3.setStyle(optionConfig2);
-                money -= sab3p;
+                this.adjustMoney(sab3p, -1)
+                //money -= sab3p;
             }
             else if(bought_3 == true)
             {
-<<<<<<< HEAD
-=======
-                this.scene.sound.play('highSelect');                      // SOUND
->>>>>>> 223f7b0bd539dd7f32a43989ce5d546b5e471936
                 if(box1filled == "bentarrow"){
                     box1filled = "none";
                     box1.setAlpha(0);
@@ -517,7 +495,8 @@ class Prep extends Phaser.Scene
                 
                 bought_3 = false;
                 option3.setStyle(optionConfig);
-                money += sab3p;
+                this.adjustMoney(sab3p, 1)
+                //money += sab3p;
             }
 
         });
@@ -526,10 +505,6 @@ class Prep extends Phaser.Scene
             this.sound.play('highSelect');
             if(bought_4 == false && money >= sab4p)
             {
-<<<<<<< HEAD
-=======
-                this.scene.sound.play('highSelect');              // SOUND
->>>>>>> 223f7b0bd539dd7f32a43989ce5d546b5e471936
                 if(box1filled == "none"){
                     box1filled = "misbow";
                     box1.setTexture('misbow');
@@ -563,14 +538,11 @@ class Prep extends Phaser.Scene
                 
                 bought_4 = true;
                 option4.setStyle(optionConfig2);
-                money -= sab4p;
+                this.adjustMoney(sab4p, -1)
+                //money -= sab4p;
             }
             else if(bought_4 == true)
             {
-<<<<<<< HEAD
-=======
-                this.scene.sound.play('highSelect');                      // SOUND
->>>>>>> 223f7b0bd539dd7f32a43989ce5d546b5e471936
                 if(box1filled == "misbow"){
                     box1filled = "none";
                     box1.setAlpha(0);
@@ -598,7 +570,8 @@ class Prep extends Phaser.Scene
                 
                 bought_4 = false;
                 option4.setStyle(optionConfig);
-                money += sab4p;
+                this.adjustMoney(sab4p, 1)
+                //money += sab4p;
             }
 
         });
@@ -607,10 +580,6 @@ class Prep extends Phaser.Scene
             this.sound.play('highSelect');
             if(bought_5 == false && money >= sab5p)
             {
-<<<<<<< HEAD
-=======
-                this.scene.sound.play('highSelect');                          // SOUND
->>>>>>> 223f7b0bd539dd7f32a43989ce5d546b5e471936
                 if(box1filled == "none"){
                     box1filled = "bird";
                     box1.setTexture('bird');
@@ -644,14 +613,11 @@ class Prep extends Phaser.Scene
                 
                 bought_5 = true;
                 option5.setStyle(optionConfig2);
-                money -= sab5p;
+                this.adjustMoney(sab5p, -1)
+                //money -= sab5p;
             }
             else if(bought_5 == true)
             {
-<<<<<<< HEAD
-=======
-                this.scene.sound.play('highSelect');                  // SOUND
->>>>>>> 223f7b0bd539dd7f32a43989ce5d546b5e471936
                 if(box1filled == "bird"){
                     box1filled = "none";
                     box1.setAlpha(0);
@@ -679,7 +645,8 @@ class Prep extends Phaser.Scene
 
                 bought_5 = false;
                 option5.setStyle(optionConfig);
-                money += sab5p;
+                this.adjustMoney(sab5p, 1)
+                //money += sab5p;
             }
 
         });
@@ -688,10 +655,6 @@ class Prep extends Phaser.Scene
             this.sound.play('highSelect');
             if(bought_6 == false && money >= sab6p)
             {
-<<<<<<< HEAD
-=======
-                this.scene.sound.play('highSelect');                                // SOUND
->>>>>>> 223f7b0bd539dd7f32a43989ce5d546b5e471936
                 if(box1filled == "none"){
                     box1filled = "fight";
                     box1.setTexture('fight');
@@ -725,18 +688,15 @@ class Prep extends Phaser.Scene
                 
                 bought_6 = true;
                 option6.setStyle(optionConfig2);
-                money -= sab6p;
+                this.adjustMoney(sab6p, -1)
+                //money -= sab6p;
             }
             else if(bought_6 == true)
-<<<<<<< HEAD
             {                         // SOUND
-=======
-            {
-                this.scene.sound.play('highSelect');                            // SOUND
->>>>>>> 223f7b0bd539dd7f32a43989ce5d546b5e471936
                 bought_6 = false;
                 option6.setStyle(optionConfig);
-                money += sab6p;
+                this.adjustMoney(sab6p, 1)
+                //money += sab6p;
 
                 if(box1filled == "fight"){
                     box1filled = "none";
