@@ -126,7 +126,7 @@ class Prep extends Phaser.Scene
                 }
                 if(this.spaceCount == 3){
                     this.spaceCount += 1;
-                    this.rundown.text = "That's all I got for ya.\n\nNow let's sabotage!\n\nPress Space to begin playing"
+                    this.rundown.text = "That's all I got for ya. The\ntourney goes on for five days,\nso we got five shots at this.\n\nNow let's sabotage!\n\nPress Space to begin playing"
                 }
                 if(this.spaceCount == 2){
                     this.spaceCount += 1;
@@ -141,7 +141,7 @@ class Prep extends Phaser.Scene
                     this.time.delayedCall(500, () => {
                         this.rightInstruct.destroy();
                         this.rundown.x = 300;
-                        this.rundown.text = "These are stats on the\narchers we're sabotaging.\n\nSabotages affect them\ndifferently, which we're gonna\ncapitalize on.\n\nClicking the orange plus next\nto any archer will put $50 into\nyour bet, and pressing minus\ntakes $50 out.\n\nPress Space"
+                        this.rundown.text = "These are stats on the\narchers we're sabotaging.\n\nA green arrow means a sabotage\nis more effective, and a red arrow\nmeans the opposite.\n\nA higher ratio means a higher\nmultiplier should you win, but also\nmeans that archer's less likely to win.\n\nClick the plus next to any archer to\nput $50 into your bet, and press\nminus to take $50 out.\n\nPress Space"
                         this.rundownIn.play();
                         
                     })
@@ -246,7 +246,6 @@ class Prep extends Phaser.Scene
         //this.instructions.setFontSize(20);
 
         //ready prompt
-        this.ready = this.add.text(game.config.width - 10000, game.config.height + - 35000, 'Ready to Go', menuConfig).setOrigin(0.5);
 
         this.moneyText = this.add.text(game.config.width / 2 + 70, game.config.height - 37, 'Money:', moneyConfig).setOrigin(0.5);
 
@@ -274,7 +273,6 @@ class Prep extends Phaser.Scene
         option4.setInteractive();
         option5.setInteractive();
         option6.setInteractive();
-        this.ready.setInteractive();
         
         //Air horn
         option1.on('pointerdown', () => {

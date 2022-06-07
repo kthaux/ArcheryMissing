@@ -16,13 +16,15 @@ class Credits extends Phaser.Scene
 
         this.totalText = this.add.text(game.config.width / 2 , 30, 'Total money earned: ' + (earned), creditsConfig).setOrigin(0.5);
 
-        this.creditsText = this.add.text(game.config.width / 2 , 60, 'Credits: ', moneyConfig).setOrigin(0.5);
+        this.creditsText = this.add.text(game.config.width / 2 , 100, 'Credits: ', moneyConfig).setOrigin(0.5);
 
-        this.keatonText = this.add.text(game.config.width / 2 , 120, 'Keaton Haux - Programming \n -Archer stat randomization \n -Winner, score, and money calculation', moneyConfig).setOrigin(0.5);
+        this.keatonText = this.add.text(game.config.width / 2 , 150, 'Keaton Haux - Programming', moneyConfig).setOrigin(0.5);
 
-        this.seanText = this.add.text(game.config.width / 2 , 220, 'Sean Osborne -  \n - \n -', moneyConfig).setOrigin(0.5);
+        this.seanText = this.add.text(game.config.width / 2 , 200, 'Sean Osborne -  Programming', moneyConfig).setOrigin(0.5);
 
-        this.jenniferText = this.add.text(game.config.width / 2 , 300, 'Jennifer To -  \n - \n -', moneyConfig).setOrigin(0.5);
+        this.jenniferText = this.add.text(game.config.width / 2 , 250, 'Jennifer To -  Art & Sound Effects', moneyConfig).setOrigin(0.5);
+
+        this.pressSpace = this.add.text(game.config.width / 2 , 600, 'Press Space to head back to the title screen', moneyConfig).setOrigin(0.5);
 
 
 

@@ -21,6 +21,9 @@ class Tourney extends Phaser.Scene
         this.day = this.add.text(game.config.width/2, game.config.height/2 - 30, 'Winner of Day ' + day + ':', menuConfig).setOrigin(0.5);
         spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE); 
         this.add.rectangle(0, game.config.height - 70, game.config.width, game.config.height / 8, 0x16ca9f).setOrigin(0, 0);
+        this.moneyText = this.add.text(game.config.width / 2 + 70, game.config.height - 37, money, moneyConfig).setOrigin(0.5);
+
+        this.done = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'done').setOrigin(0);
 
 
         this.findWinner();
