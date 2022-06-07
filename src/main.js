@@ -28,6 +28,17 @@ let moneyConfig = {
     },
 }
 
+let creditsConfig = {
+    fontFamily: 'Minecraft',
+    fontSize: '35px',
+    color: '#44891a',
+    align: 'right',
+    padding: {
+    top: 5,
+    bottom: 5,
+    },
+}
+
 let optionConfig = {
     fontFamily: 'Minecraft',
     fontSize: '24px',
