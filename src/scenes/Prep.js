@@ -25,7 +25,7 @@ class Prep extends Phaser.Scene
             }
         }
     }
-
+    
     create() 
     {        
         //set up ui text and info for the prep scene
@@ -275,10 +275,10 @@ class Prep extends Phaser.Scene
         this.ready.setInteractive();
         
         //Air horn
-        option1.on('pointerdown', function (checking) {
+        option1.on('pointerdown', () => {
+            this.sound.play('highSelect');
             if(bought_1 == false && money >= sab1p)
-            {
-                this.sound.play('highSelect');                                                         // SOUND
+            {                                                        // SOUND
                 if(box1filled == "none"){
                     box1filled = "horn";
                     box1.setTexture('horn');
@@ -316,8 +316,7 @@ class Prep extends Phaser.Scene
                 //money -= sab1p;
             }
 
-            else if(bought_1 == true){
-                this.sound.play('highSelect');                                         // SOUND
+            else if(bought_1 == true){                                        // SOUND
                 if(box1filled == "horn"){
                     box1filled = "none";
                     box1.setAlpha(0);
@@ -349,10 +348,10 @@ class Prep extends Phaser.Scene
             }
         });
         //Giant Fan
-        option2.on('pointerdown', function (checking) {
+        option2.on('pointerdown', () => {
+            this.sound.play('highSelect');
             if(bought_2 == false && money >= sab2p)
-            {
-                this.sound.play('highSelect');                              // SOUND
+            {                             // SOUND
                 if(box1filled == "none"){
                     box1filled = "fan";
                     box1.setTexture('fan');
@@ -389,8 +388,7 @@ class Prep extends Phaser.Scene
                 money -= sab2p;
             }
             else if(bought_2 == true)
-            {
-                this.sound.play('highSelect');                          // SOUND
+            {                        
                 if(box1filled == "fan"){
                     box1filled = "none";
                     box1.setAlpha(0);
@@ -423,10 +421,10 @@ class Prep extends Phaser.Scene
             
         });
         //Bent Arrows
-        option3.on('pointerdown', function (checking) {
+        option3.on('pointerdown', () => {
+            this.sound.play('highSelect');
             if(bought_3 == false && money >= sab3p)
             {
-                this.sound.play('highSelect');                          // SOUND
                 if(box1filled == "none"){
                     box1filled = "bentarrow";
                     box1.setTexture('bentarrow');
@@ -464,7 +462,6 @@ class Prep extends Phaser.Scene
             }
             else if(bought_3 == true)
             {
-                this.sound.play('highSelect');                      // SOUND
                 if(box1filled == "bentarrow"){
                     box1filled = "none";
                     box1.setAlpha(0);
@@ -497,10 +494,10 @@ class Prep extends Phaser.Scene
 
         });
         //misaligned bow
-        option4.on('pointerdown', function (checking) {
+        option4.on('pointerdown', () => {
+            this.sound.play('highSelect');
             if(bought_4 == false && money >= sab4p)
             {
-                this.sound.play('highSelect');              // SOUND
                 if(box1filled == "none"){
                     box1filled = "misbow";
                     box1.setTexture('misbow');
@@ -538,7 +535,6 @@ class Prep extends Phaser.Scene
             }
             else if(bought_4 == true)
             {
-                this.sound.play('highSelect');                      // SOUND
                 if(box1filled == "misbow"){
                     box1filled = "none";
                     box1.setAlpha(0);
@@ -571,10 +567,10 @@ class Prep extends Phaser.Scene
 
         });
         //release birds
-        option5.on('pointerdown', function (checking) {
+        option5.on('pointerdown', () => {
+            this.sound.play('highSelect');
             if(bought_5 == false && money >= sab5p)
             {
-                this.sound.play('highSelect');                          // SOUND
                 if(box1filled == "none"){
                     box1filled = "bird";
                     box1.setTexture('bird');
@@ -612,7 +608,6 @@ class Prep extends Phaser.Scene
             }
             else if(bought_5 == true)
             {
-                this.sound.play('highSelect');                  // SOUND
                 if(box1filled == "bird"){
                     box1filled = "none";
                     box1.setAlpha(0);
@@ -645,10 +640,10 @@ class Prep extends Phaser.Scene
 
         });
         //cause a fight
-        option6.on('pointerdown', function (checking) {
+        option6.on('pointerdown', () => {
+            this.sound.play('highSelect');
             if(bought_6 == false && money >= sab6p)
             {
-                this.sound.play('highSelect');                                // SOUND
                 if(box1filled == "none"){
                     box1filled = "fight";
                     box1.setTexture('fight');
@@ -685,8 +680,7 @@ class Prep extends Phaser.Scene
                 money -= sab6p;
             }
             else if(bought_6 == true)
-            {
-                this.sound.play('highSelect');                            // SOUND
+            {                         // SOUND
                 bought_6 = false;
                 option6.setStyle(optionConfig);
                 money += sab6p;
@@ -871,7 +865,8 @@ class Prep extends Phaser.Scene
         this.plus1.setInteractive({
             useHandCursor: true
         });
-        this.plus1.on('pointerdown', function (pointer){                                                // put highSelect sounds for every bet here?
+        this.plus1.on('pointerdown', function (pointer){ 
+            //this.sound.play('highSelect');                                               // put highSelect sounds for every bet here?
             if((money - 50) >= 0)
                 this.scene.archerArr[0].myBet += 50;
             this.scene.adjustMoney(50, -1);
