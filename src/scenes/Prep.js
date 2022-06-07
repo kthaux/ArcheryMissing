@@ -278,7 +278,12 @@ class Prep extends Phaser.Scene
         option1.on('pointerdown', () => {
             this.sound.play('highSelect');
             if(bought_1 == false && money >= sab1p)
+<<<<<<< HEAD
             {                                                        // SOUND
+=======
+            {
+                this.scene.sound.play('highSelect');                                                         // SOUND
+>>>>>>> 223f7b0bd539dd7f32a43989ce5d546b5e471936
                 if(box1filled == "none"){
                     box1filled = "horn";
                     box1.setTexture('horn');
@@ -316,7 +321,12 @@ class Prep extends Phaser.Scene
                 //money -= sab1p;
             }
 
+<<<<<<< HEAD
             else if(bought_1 == true){                                        // SOUND
+=======
+            else if(bought_1 == true){
+                this.scene.sound.play('highSelect');                                         // SOUND
+>>>>>>> 223f7b0bd539dd7f32a43989ce5d546b5e471936
                 if(box1filled == "horn"){
                     box1filled = "none";
                     box1.setAlpha(0);
@@ -351,7 +361,12 @@ class Prep extends Phaser.Scene
         option2.on('pointerdown', () => {
             this.sound.play('highSelect');
             if(bought_2 == false && money >= sab2p)
+<<<<<<< HEAD
             {                             // SOUND
+=======
+            {
+                this.scene.sound.play('highSelect');                              // SOUND
+>>>>>>> 223f7b0bd539dd7f32a43989ce5d546b5e471936
                 if(box1filled == "none"){
                     box1filled = "fan";
                     box1.setTexture('fan');
@@ -388,7 +403,12 @@ class Prep extends Phaser.Scene
                 money -= sab2p;
             }
             else if(bought_2 == true)
+<<<<<<< HEAD
             {                        
+=======
+            {
+                this.scene.sound.play('highSelect');                          // SOUND
+>>>>>>> 223f7b0bd539dd7f32a43989ce5d546b5e471936
                 if(box1filled == "fan"){
                     box1filled = "none";
                     box1.setAlpha(0);
@@ -425,6 +445,10 @@ class Prep extends Phaser.Scene
             this.sound.play('highSelect');
             if(bought_3 == false && money >= sab3p)
             {
+<<<<<<< HEAD
+=======
+                this.scene.sound.play('highSelect');                          // SOUND
+>>>>>>> 223f7b0bd539dd7f32a43989ce5d546b5e471936
                 if(box1filled == "none"){
                     box1filled = "bentarrow";
                     box1.setTexture('bentarrow');
@@ -462,6 +486,10 @@ class Prep extends Phaser.Scene
             }
             else if(bought_3 == true)
             {
+<<<<<<< HEAD
+=======
+                this.scene.sound.play('highSelect');                      // SOUND
+>>>>>>> 223f7b0bd539dd7f32a43989ce5d546b5e471936
                 if(box1filled == "bentarrow"){
                     box1filled = "none";
                     box1.setAlpha(0);
@@ -498,6 +526,10 @@ class Prep extends Phaser.Scene
             this.sound.play('highSelect');
             if(bought_4 == false && money >= sab4p)
             {
+<<<<<<< HEAD
+=======
+                this.scene.sound.play('highSelect');              // SOUND
+>>>>>>> 223f7b0bd539dd7f32a43989ce5d546b5e471936
                 if(box1filled == "none"){
                     box1filled = "misbow";
                     box1.setTexture('misbow');
@@ -535,6 +567,10 @@ class Prep extends Phaser.Scene
             }
             else if(bought_4 == true)
             {
+<<<<<<< HEAD
+=======
+                this.scene.sound.play('highSelect');                      // SOUND
+>>>>>>> 223f7b0bd539dd7f32a43989ce5d546b5e471936
                 if(box1filled == "misbow"){
                     box1filled = "none";
                     box1.setAlpha(0);
@@ -571,6 +607,10 @@ class Prep extends Phaser.Scene
             this.sound.play('highSelect');
             if(bought_5 == false && money >= sab5p)
             {
+<<<<<<< HEAD
+=======
+                this.scene.sound.play('highSelect');                          // SOUND
+>>>>>>> 223f7b0bd539dd7f32a43989ce5d546b5e471936
                 if(box1filled == "none"){
                     box1filled = "bird";
                     box1.setTexture('bird');
@@ -608,6 +648,10 @@ class Prep extends Phaser.Scene
             }
             else if(bought_5 == true)
             {
+<<<<<<< HEAD
+=======
+                this.scene.sound.play('highSelect');                  // SOUND
+>>>>>>> 223f7b0bd539dd7f32a43989ce5d546b5e471936
                 if(box1filled == "bird"){
                     box1filled = "none";
                     box1.setAlpha(0);
@@ -644,6 +688,10 @@ class Prep extends Phaser.Scene
             this.sound.play('highSelect');
             if(bought_6 == false && money >= sab6p)
             {
+<<<<<<< HEAD
+=======
+                this.scene.sound.play('highSelect');                                // SOUND
+>>>>>>> 223f7b0bd539dd7f32a43989ce5d546b5e471936
                 if(box1filled == "none"){
                     box1filled = "fight";
                     box1.setTexture('fight');
@@ -680,7 +728,12 @@ class Prep extends Phaser.Scene
                 money -= sab6p;
             }
             else if(bought_6 == true)
+<<<<<<< HEAD
             {                         // SOUND
+=======
+            {
+                this.scene.sound.play('highSelect');                            // SOUND
+>>>>>>> 223f7b0bd539dd7f32a43989ce5d546b5e471936
                 bought_6 = false;
                 option6.setStyle(optionConfig);
                 money += sab6p;

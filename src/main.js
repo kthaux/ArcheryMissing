@@ -52,7 +52,7 @@ let optionConfig2 = {
 
 let optionDes = {
     fontFamily: 'Minecraft',
-    fontSize: '14px',
+    fontSize: '16px',
     color: '#000000',
     align: 'center',
     padding: {
