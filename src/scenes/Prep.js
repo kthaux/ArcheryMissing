@@ -103,7 +103,7 @@ class Prep extends Phaser.Scene
 
         }
 
-        
+
     }
 
     
@@ -879,7 +879,7 @@ class Prep extends Phaser.Scene
             useHandCursor: true
         });
         this.plus1.on('pointerdown', function (pointer){ 
-            //this.sound.play('highSelect');                                               // put highSelect sounds for every bet here?
+            this.scene.sound.play('highSelect');                                               // put highSelect sounds for every bet here?
             if((money - 50) >= 0)
                 this.scene.archerArr[0].myBet += 50;
             this.scene.adjustMoney(50, -1);
@@ -891,6 +891,7 @@ class Prep extends Phaser.Scene
             useHandCursor: true
         });
         this.minus1.on('pointerdown', function (pointer){
+            this.scene.sound.play('highSelect');
             //keep bet from going negative
             if(this.scene.archerArr[0].myBet > 0)
             {
@@ -908,6 +909,7 @@ class Prep extends Phaser.Scene
             useHandCursor: true
         });
         this.plus2.on('pointerdown', function (pointer){
+            this.scene.sound.play('highSelect');
             if((money - 50) >= 0)
                 this.scene.archerArr[1].myBet += 50;
             this.scene.adjustMoney(50, -1);
@@ -919,6 +921,7 @@ class Prep extends Phaser.Scene
             useHandCursor: true
         });
         this.minus2.on('pointerdown', function (pointer){
+            this.scene.sound.play('highSelect');
             //keep bet from going negative
             if(this.scene.archerArr[1].myBet > 0)
             {
@@ -936,6 +939,7 @@ class Prep extends Phaser.Scene
             useHandCursor: true
         });
         this.plus3.on('pointerdown', function (pointer){
+            this.scene.sound.play('highSelect');
             if((money - 50) >= 0)
                 this.scene.archerArr[2].myBet += 50;
             this.scene.adjustMoney(50, -1);
@@ -947,6 +951,7 @@ class Prep extends Phaser.Scene
             useHandCursor: true
         });
         this.minus3.on('pointerdown', function (pointer){
+            this.scene.sound.play('highSelect');
             //keep bet from going negative
             if(this.scene.archerArr[2].myBet > 0)
             {
@@ -964,6 +969,7 @@ class Prep extends Phaser.Scene
             useHandCursor: true
         });
         this.plus4.on('pointerdown', function (pointer){
+            this.scene.sound.play('highSelect');
             if((money - 50) >= 0)
                 this.scene.archerArr[3].myBet += 50;
             this.scene.adjustMoney(50, -1);
@@ -975,6 +981,7 @@ class Prep extends Phaser.Scene
             useHandCursor: true
         });
         this.minus4.on('pointerdown', function (pointer){
+            this.scene.sound.play('highSelect');
             //keep bet from going negative
             if(this.scene.archerArr[3].myBet > 0)
             {
@@ -992,6 +999,7 @@ class Prep extends Phaser.Scene
             useHandCursor: true
         });
         this.plus5.on('pointerdown', function (pointer){
+            this.scene.sound.play('highSelect');
             if((money - 50) >= 0)
                 this.scene.archerArr[4].myBet += 50;
             this.scene.adjustMoney(50, -1);
@@ -1003,6 +1011,7 @@ class Prep extends Phaser.Scene
             useHandCursor: true
         });
         this.minus5.on('pointerdown', function (pointer){
+            this.scene.sound.play('highSelect');
             //keep bet from going negative
             if(this.scene.archerArr[4].myBet > 0)
             {
