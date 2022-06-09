@@ -7,6 +7,8 @@ class Title extends Phaser.Scene
 
     create() 
     {
+        money = 1000;
+        earned = 0;
         let menuConfig = {
             fontFamily: 'Minecraft',
             fontSize: '30px',
